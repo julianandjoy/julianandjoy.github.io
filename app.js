@@ -178,32 +178,58 @@ const pages = {
     <section class="page-section">
       <h2 class="page-title">Dress Code</h2>
       <div class="divider"></div>
-      <h3>Semi-Formal / Cocktail Attire</h3>
-      <div class="divider-small"></div>
-      <p style="max-width:600px;margin:0 auto;line-height:1.8;">
-        We want everyone to feel comfortable and look their best! Check out our Pinterest mood boards below for inspiration on attire, colors, and vibes for the weekend.
+      <p style="max-width:600px;margin:0 auto 2.5rem;line-height:1.8;">
+        We want everyone to feel comfortable and look their best throughout the celebration! Check out our Pinterest mood boards below for inspiration on attire, colors, and vibes for each event.
       </p>
       
-      <div style="display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; margin: 2.5rem 0;">
-        <!-- Women's Pinterest Board -->
-        <div style="flex: 1 1 300px; max-width: 400px; text-align: center;">
-          <h4 style="color: var(--color-accent); margin-bottom: 1rem; font-size: 1.3rem;">Women's Inspiration</h4>
-          <a data-pin-do="embedBoard" data-pin-board-width="400" data-pin-scale-height="320" data-pin-scale-width="115" href="https://www.pinterest.com/joiiewang/wedding-guests/"></a>
-        </div>
+      <!-- Welcome Dinner Section -->
+      <div style="margin-bottom: 4rem;">
+        <h3 style="font-size: 1.8rem; color: var(--color-text); margin-bottom: 0.5rem;">Welcome Dinner</h3>
+        <p style="color: var(--color-accent); font-style: italic; margin-bottom: 2rem;">Casual &amp; Comfortable</p>
         
-        <!-- Men's Pinterest Board -->
-        <div style="flex: 1 1 300px; max-width: 400px; text-align: center;">
-          <h4 style="color: var(--color-accent); margin-bottom: 1rem; font-size: 1.3rem;">Men's Inspiration</h4>
-          <a data-pin-do="embedBoard" data-pin-board-width="400" data-pin-scale-height="320" data-pin-scale-width="115" href="https://www.pinterest.com/julianw0132/mens-wedding-outfits/"></a>
+        <div style="display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; margin-bottom: 1.5rem;">
+          <!-- Women's Welcome Dinner Board -->
+          <div style="flex: 1 1 300px; max-width: 400px; text-align: center;">
+            <h4 style="color: var(--color-accent); margin-bottom: 1rem; font-size: 1.2rem;">Women's Welcome Dinner</h4>
+            <a data-pin-do="embedBoard" data-pin-board-width="400" data-pin-scale-height="280" data-pin-scale-width="115" href="https://www.pinterest.com/joiiewang/welcome-dinner-guests/"></a>
+          </div>
+          
+          <!-- Men's Welcome Dinner Board -->
+          <div style="flex: 1 1 300px; max-width: 400px; text-align: center;">
+            <h4 style="color: var(--color-accent); margin-bottom: 1rem; font-size: 1.2rem;">Men's Welcome Dinner</h4>
+            <a data-pin-do="embedBoard" data-pin-board-width="400" data-pin-scale-height="280" data-pin-scale-width="115" href="https://www.pinterest.com/joiiewang/mens-welcome-dinner/"></a>
+          </div>
         </div>
       </div>
       
-      <div class="divider-small"></div>
-      <div style="max-width:500px;margin:1.5rem auto;text-align:left;">
-        <p><strong style="color:var(--color-accent)">For her:</strong> Cocktail dresses, jumpsuits, or dressy separates. Floor-length gowns are welcome too.</p>
-        <p><strong style="color:var(--color-accent)">For him:</strong> Suit and tie, or dress shirt with slacks. No need for a full tuxedo.</p>
+      <div class="divider"></div>
+      
+      <!-- Wedding Day Section -->
+      <div style="margin-top: 3rem;">
+        <h3 style="font-size: 1.8rem; color: var(--color-text); margin-bottom: 0.5rem;">Wedding Day</h3>
+        <p style="color: var(--color-accent); font-style: italic; margin-bottom: 2rem;">Semi-Formal / Cocktail Attire</p>
+        
+        <div style="display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem;">
+          <!-- Women's Wedding Day Board -->
+          <div style="flex: 1 1 300px; max-width: 400px; text-align: center;">
+            <h4 style="color: var(--color-accent); margin-bottom: 1rem; font-size: 1.2rem;">Women's Wedding Day</h4>
+            <a data-pin-do="embedBoard" data-pin-board-width="400" data-pin-scale-height="280" data-pin-scale-width="115" href="https://www.pinterest.com/joiiewang/wedding-guests/"></a>
+          </div>
+          
+          <!-- Men's Wedding Day Board -->
+          <div style="flex: 1 1 300px; max-width: 400px; text-align: center;">
+            <h4 style="color: var(--color-accent); margin-bottom: 1rem; font-size: 1.2rem;">Men's Wedding Day</h4>
+            <a data-pin-do="embedBoard" data-pin-board-width="400" data-pin-scale-height="280" data-pin-scale-width="115" href="https://www.pinterest.com/julianw0132/mens-wedding-outfits/"></a>
+          </div>
+        </div>
+        
+        <div class="divider-small"></div>
+        <div style="max-width:500px;margin:1.5rem auto;text-align:left;">
+          <p><strong style="color:var(--color-accent)">For her:</strong> Cocktail dresses, jumpsuits, or dressy separates. Floor-length gowns are welcome too.</p>
+          <p><strong style="color:var(--color-accent)">For him:</strong> Suit and tie, or dress shirt with slacks. No need for a full tuxedo.</p>
+        </div>
+        <p style="font-style:italic;opacity:0.8;">Please avoid wearing white or ivory.</p>
       </div>
-      <p style="font-style:italic;opacity:0.8;">Please avoid wearing white or ivory.</p>
     </section>
   `,
 
