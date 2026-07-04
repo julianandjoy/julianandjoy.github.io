@@ -46,19 +46,9 @@ const pages = {
         <h3>Welcome Dinner</h3>
         <p class="event-time">18:00</p>
         <p class="event-desc">Join us for a dinner to kick off the weekend! We’ll have welcome drinks, snax, and pizzas!</p>
-        <div style="margin-top: 1.5rem; text-align: center;">
-          <strong style="color: var(--color-accent); font-size: 1rem; display: block; margin-bottom: 1rem;">Dress Code Inspiration</strong>
-          <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;">
-            <div>
-              <h4 style="font-size: 0.95rem; margin-bottom: 0.5rem; color: var(--color-text); opacity: 0.9;">Women's Welcome Dinner</h4>
-              <a data-pin-do="embedBoard" data-pin-board-width="320" data-pin-scale-height="240" data-pin-scale-width="115" href="https://www.pinterest.com/joiiewang/welcome-dinner-guests/"></a>
-            </div>
-            <div>
-              <h4 style="font-size: 0.95rem; margin-bottom: 0.5rem; color: var(--color-text); opacity: 0.9;">Men's Welcome Dinner</h4>
-              <a data-pin-do="embedBoard" data-pin-board-width="320" data-pin-scale-height="240" data-pin-scale-width="115" href="https://www.pinterest.com/joiiewang/mens-welcome-dinner/"></a>
-            </div>
-          </div>
-        </div>
+        <p class="event-desc" style="font-size: 0.95rem; margin-top: 0.75rem;">
+          <strong style="color: var(--color-accent);">Dress Code:</strong> Casual &amp; Comfortable — <a href="#dress-code" style="text-decoration: underline;">View attire guidelines &amp; mood boards</a>
+        </p>
       </div>
       
       <div class="divider-small"></div>
@@ -78,19 +68,9 @@ const pages = {
         <h3>Wedding Ceremony</h3>
         <p class="event-time">Afternoon Onwards</p>
         <p class="event-desc">Julian and Joy get married! We make it official with all the people we love as witnesses.</p>
-        <div style="margin-top: 1.5rem; text-align: center;">
-          <strong style="color: var(--color-accent); font-size: 1rem; display: block; margin-bottom: 1rem;">Dress Code Inspiration</strong>
-          <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;">
-            <div>
-              <h4 style="font-size: 0.95rem; margin-bottom: 0.5rem; color: var(--color-text); opacity: 0.9;">Women's Wedding Day</h4>
-              <a data-pin-do="embedBoard" data-pin-board-width="320" data-pin-scale-height="240" data-pin-scale-width="115" href="https://www.pinterest.com/joiiewang/wedding-guests/"></a>
-            </div>
-            <div>
-              <h4 style="font-size: 0.95rem; margin-bottom: 0.5rem; color: var(--color-text); opacity: 0.9;">Men's Wedding Day</h4>
-              <a data-pin-do="embedBoard" data-pin-board-width="320" data-pin-scale-height="240" data-pin-scale-width="115" href="https://www.pinterest.com/julianw0132/mens-wedding-outfits/"></a>
-            </div>
-          </div>
-        </div>
+        <p class="event-desc" style="font-size: 0.95rem; margin-top: 0.75rem;">
+          <strong style="color: var(--color-accent);">Dress Code:</strong> Semi-Formal / Cocktail Attire — <a href="#dress-code" style="text-decoration: underline;">View attire guidelines &amp; mood boards</a>
+        </p>
       </div>
       
       <div class="event-card">
