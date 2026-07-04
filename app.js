@@ -1,7 +1,7 @@
 // === Wedding Website - Single Page App (no build tools needed) ===
 
 // Replace this with your actual Google Apps Script deployment URL
-const GOOGLE_SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzVMnyNSJWTsgnSEQq-kRukBPLiTDwVKjI7kOIOHCE-G9SDzm0VLr8nyOYt-XOVUE6O/exec';
 
 // Page content templates
 const pages = {
@@ -33,36 +33,114 @@ const pages = {
     <section class="page-section">
       <h2 class="page-title">Schedule of Events</h2>
       <div class="divider"></div>
+      
+      <h3 class="day-title" style="margin-top: 2rem; margin-bottom: 1.5rem; font-weight: 400;">Day 1 (5/21)</h3>
+      
       <div class="event-card">
-        <h3>Welcome Party</h3>
-        <p class="event-date">Friday, September 24</p>
-        <p class="event-time">4:00 PM</p>
-        <p class="event-venue">Venue Name</p>
-        <p class="event-desc">Come by for some appetizers and drinks, and help us kick off our celebration!</p>
+        <h3>Check In</h3>
+        <p class="event-time">16:00</p>
+        <p class="event-desc">Welcome to Chateau de la Couronne! Settle in, explore the chateau, and make yourself comfortable.</p>
       </div>
-      <div class="divider-small"></div>
+      
       <div class="event-card">
-        <h3>Wedding Ceremony &amp; Reception</h3>
-        <p class="event-date">Saturday, September 25</p>
-        <p class="event-time">4:30 PM – 10:00 PM</p>
-        <p class="event-venue">Venue Name</p>
-        <p class="event-desc">The ceremony will begin promptly at 4:30 PM. Please plan your transportation in advance.</p>
+        <h3>Welcome Dinner</h3>
+        <p class="event-time">18:00</p>
+        <p class="event-desc">Join us for a dinner to kick off the weekend! We’ll have welcome drinks, snax, and pizzas!</p>
+        <div style="margin-top: 1.5rem; text-align: center;">
+          <strong style="color: var(--color-accent); font-size: 1rem; display: block; margin-bottom: 1rem;">Dress Code Inspiration</strong>
+          <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;">
+            <div>
+              <h4 style="font-size: 0.95rem; margin-bottom: 0.5rem; color: var(--color-text); opacity: 0.9;">Women's Welcome Dinner</h4>
+              <a data-pin-do="embedBoard" data-pin-board-width="320" data-pin-scale-height="240" data-pin-scale-width="115" href="https://www.pinterest.com/joiiewang/welcome-dinner-guests/"></a>
+            </div>
+            <div>
+              <h4 style="font-size: 0.95rem; margin-bottom: 0.5rem; color: var(--color-text); opacity: 0.9;">Men's Welcome Dinner</h4>
+              <a data-pin-do="embedBoard" data-pin-board-width="320" data-pin-scale-height="240" data-pin-scale-width="115" href="https://www.pinterest.com/joiiewang/mens-welcome-dinner/"></a>
+            </div>
+          </div>
+        </div>
       </div>
+      
       <div class="divider-small"></div>
+      
+      <h3 class="day-title" style="margin-top: 2rem; margin-bottom: 1.5rem; font-weight: 400;">Day 2 (5/22)</h3>
+      
       <div class="event-card">
-        <h3>After Party</h3>
-        <p class="event-date">Saturday, September 25</p>
-        <p class="event-time">10:00 PM – 2:00 AM</p>
-        <p class="event-venue">Venue Name</p>
-        <p class="event-desc">Dancing, drinks, and late-night snacks. Transportation provided from the reception.</p>
+        <h3>Brunch</h3>
+        <p class="event-time">Morning</p>
+        <p class="event-desc">Enjoy a casual brunch on the property! We’ll have an assortment of options as a buffet.</p>
+        <p class="event-desc" style="font-size: 0.9rem; opacity: 0.8;">
+          <strong>Dress Code:</strong> Come in whatever you are comfortable in!
+        </p>
       </div>
-      <div class="divider-small"></div>
+      
       <div class="event-card">
-        <h3>Farewell Breakfast</h3>
-        <p class="event-date">Sunday, September 26</p>
-        <p class="event-time">10:00 AM – 1:00 PM</p>
-        <p class="event-venue">Venue Name</p>
-        <p class="event-desc">Join us for a light breakfast and coffee before you head home.</p>
+        <h3>Wedding Ceremony</h3>
+        <p class="event-time">Afternoon Onwards</p>
+        <p class="event-desc">Julian and Joy get married! We make it official with all the people we love as witnesses.</p>
+        <div style="margin-top: 1.5rem; text-align: center;">
+          <strong style="color: var(--color-accent); font-size: 1rem; display: block; margin-bottom: 1rem;">Dress Code Inspiration</strong>
+          <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;">
+            <div>
+              <h4 style="font-size: 0.95rem; margin-bottom: 0.5rem; color: var(--color-text); opacity: 0.9;">Women's Wedding Day</h4>
+              <a data-pin-do="embedBoard" data-pin-board-width="320" data-pin-scale-height="240" data-pin-scale-width="115" href="https://www.pinterest.com/joiiewang/wedding-guests/"></a>
+            </div>
+            <div>
+              <h4 style="font-size: 0.95rem; margin-bottom: 0.5rem; color: var(--color-text); opacity: 0.9;">Men's Wedding Day</h4>
+              <a data-pin-do="embedBoard" data-pin-board-width="320" data-pin-scale-height="240" data-pin-scale-width="115" href="https://www.pinterest.com/julianw0132/mens-wedding-outfits/"></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="event-card">
+        <h3>Cocktail Hour</h3>
+        <p class="event-time">Afternoon</p>
+        <p class="event-desc">There will be drinks, snacks, and live music!</p>
+      </div>
+      
+      <div class="event-card">
+        <h3>Seated Dinner</h3>
+        <p class="event-time">Evening</p>
+        <p class="event-desc">Ready for some food? We got you!</p>
+      </div>
+      
+      <div class="event-card">
+        <h3>Late Night Dancing</h3>
+        <p class="event-time">Late Night</p>
+        <p class="event-desc">weeeeeee</p>
+      </div>
+      
+      <div class="divider-small"></div>
+      
+      <h3 class="day-title" style="margin-top: 2rem; margin-bottom: 1.5rem; font-weight: 400;">Day 3 (5/23)</h3>
+      
+      <div class="event-card">
+        <h3>Breakfast</h3>
+        <p class="event-time">Morning</p>
+        <p class="event-desc">Nothing cures a hangover better than a hearty breakfast (or some more drinks - later)</p>
+      </div>
+      
+      <div class="event-card">
+        <h3>Pool Party</h3>
+        <p class="event-time">Afternoon</p>
+        <p class="event-desc">Celebrate with us on our first day as a married couple! Relax and recover by the pool while enjoying some BBQ, games, and drinks!</p>
+      </div>
+      
+      <div class="event-card">
+        <h3>Game Night</h3>
+        <p class="event-time">Evening</p>
+        <p class="event-desc">It’s time! Enjoy some light bites and drinks and we do what we do best - gamble! Join in on a casual night of gambling - we’ll have mahjong, cards, and poker chips!</p>
+      </div>
+      
+      <div class="divider-small"></div>
+      
+      <h3 class="day-title" style="margin-top: 2rem; margin-bottom: 1.5rem; font-weight: 400;">Day 4 (5/24)</h3>
+      
+      <div class="event-card">
+        <h3>Breakfast &amp; Check Out</h3>
+        <p class="event-time">Morning</p>
+        <p class="event-desc">Check out!</p>
       </div>
     </section>
   `,
@@ -71,14 +149,27 @@ const pages = {
     <section class="page-section">
       <h2 class="page-title">Venue</h2>
       <div class="divider"></div>
-      <h3>Ceremony &amp; Reception</h3>
-      <p>Venue Name</p>
-      <p>123 Street Address</p>
-      <p>City, State ZIP</p>
+      <h3>Château de la Couronne</h3>
+      <p style="margin-bottom: 1.5rem; opacity: 0.8;">Marthon, France</p>
+      
+      <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem;">
+        <div style="flex: 1 1 300px; max-width: 450px; border-radius: 4px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.2);">
+          <img src="https://images.unsplash.com/photo-1548625361-16a00e5720db?auto=format&fit=crop&w=800&q=80" alt="Château Exterior" style="width: 100%; height: 260px; object-fit: cover; display: block;" />
+          <p style="padding: 0.5rem; font-size: 0.8rem; background: rgba(0,0,0,0.2); margin: 0;">The Historic Château</p>
+        </div>
+        <div style="flex: 1 1 300px; max-width: 450px; border-radius: 4px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.2);">
+          <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=800&q=80" alt="Château Gardens" style="width: 100%; height: 260px; object-fit: cover; display: block;" />
+          <p style="padding: 0.5rem; font-size: 0.8rem; background: rgba(0,0,0,0.2); margin: 0;">The Estate Grounds</p>
+        </div>
+      </div>
+      
       <div class="divider-small"></div>
-      <p style="max-width:500px;margin:0 auto;line-height:1.8;">
-        More details about the venue, parking information, and anything else
-        your guests should know.
+      <p style="max-width:600px;margin:0 auto;line-height:1.8;">
+        We are thrilled to host our celebration at the enchanting Château de la Couronne! 
+        Nestled in the picturesque French countryside, this stunning 16th-century estate features sprawling gardens, luxurious rooms, and endless charm.
+      </p>
+      <p style="margin-top: 1.5rem;">
+        <a href="https://chateaudelacouronne.com" target="_blank" class="btn">Visit Venue Website</a>
       </p>
     </section>
   `,
@@ -90,13 +181,28 @@ const pages = {
       <h3>Semi-Formal / Cocktail Attire</h3>
       <div class="divider-small"></div>
       <p style="max-width:600px;margin:0 auto;line-height:1.8;">
-        We want everyone to feel comfortable and look their best.
+        We want everyone to feel comfortable and look their best! Check out our Pinterest mood boards below for inspiration on attire, colors, and vibes for the weekend.
       </p>
-      <div style="max-width:500px;margin:2rem auto;text-align:left;">
+      
+      <div style="display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; margin: 2.5rem 0;">
+        <!-- Women's Pinterest Board -->
+        <div style="flex: 1 1 300px; max-width: 400px; text-align: center;">
+          <h4 style="color: var(--color-accent); margin-bottom: 1rem; font-size: 1.3rem;">Women's Inspiration</h4>
+          <a data-pin-do="embedBoard" data-pin-board-width="400" data-pin-scale-height="320" data-pin-scale-width="115" href="https://www.pinterest.com/joiiewang/wedding-guests/"></a>
+        </div>
+        
+        <!-- Men's Pinterest Board -->
+        <div style="flex: 1 1 300px; max-width: 400px; text-align: center;">
+          <h4 style="color: var(--color-accent); margin-bottom: 1rem; font-size: 1.3rem;">Men's Inspiration</h4>
+          <a data-pin-do="embedBoard" data-pin-board-width="400" data-pin-scale-height="320" data-pin-scale-width="115" href="https://www.pinterest.com/julianw0132/mens-wedding-outfits/"></a>
+        </div>
+      </div>
+      
+      <div class="divider-small"></div>
+      <div style="max-width:500px;margin:1.5rem auto;text-align:left;">
         <p><strong style="color:var(--color-accent)">For her:</strong> Cocktail dresses, jumpsuits, or dressy separates. Floor-length gowns are welcome too.</p>
         <p><strong style="color:var(--color-accent)">For him:</strong> Suit and tie, or dress shirt with slacks. No need for a full tuxedo.</p>
       </div>
-      <div class="divider-small"></div>
       <p style="font-style:italic;opacity:0.8;">Please avoid wearing white or ivory.</p>
     </section>
   `,
@@ -168,26 +274,50 @@ const pages = {
     <section class="page-section">
       <h2 class="page-title">Travel &amp; Accommodations</h2>
       <div class="divider"></div>
+      
       <div class="info-block">
-        <h3>Hotel</h3>
-        <p>Hotel Name</p>
-        <p>123 Hotel Address, City, State ZIP</p>
-        <p style="margin-top:1rem;line-height:1.8;">
-          We have a room block reserved. Use code
-          <strong style="color:var(--color-accent)">WEDDINGCODE</strong> for the group rate.
+        <div style="text-align:center;margin-bottom:2rem;">
+          <h3>Venue Address</h3>
+          <p style="font-size:1.2rem;margin-bottom:0.2rem;"><strong>Château de la Couronne</strong></p>
+          <p>16380 Marthon, France</p>
+          <p style="margin-top:0.5rem;font-size:0.85rem;opacity:0.8;font-style:italic;">
+            ⚠️ Please ensure your GPS is set to <strong>Marthon (16380)</strong>, as there is another town called "La Couronne" nearby!
+          </p>
+          <a href="https://maps.google.com/?q=Chateau+de+la+Couronne+16380+Marthon+France" target="_blank" class="btn" style="margin-top:1rem;display:inline-block;">Open in Google Maps</a>
+        </div>
+        
+        <div class="divider"></div>
+        
+        <h3>Getting There by Train 🚆</h3>
+        <p style="line-height:1.8;">
+          The closest major train station is <strong>Angoulême TGV Station</strong>, located about a 25-minute drive from the château. 
+          There are direct high-speed TGV trains from Paris (Gare Montparnasse) to Angoulême that take approximately <strong>1 hour and 45 minutes</strong>. 
+          From the station, you can easily take a taxi or rent a car to reach the venue.
         </p>
-        <a href="#" class="btn" style="margin-top:1rem;display:inline-block;">Book Hotel</a>
+        
         <div class="divider"></div>
-        <h3>Getting There</h3>
-        <p style="line-height:1.8;"><strong style="color:var(--color-accent)">By air:</strong> The nearest airport is XYZ International (ABC), about 30 minutes from the venue.</p>
-        <p style="line-height:1.8;"><strong style="color:var(--color-accent)">By car:</strong> Parking is available on site.</p>
-        <div class="divider"></div>
-        <h3>Things to Do</h3>
-        <ul>
-          <li>Local restaurant recommendation</li>
-          <li>Scenic spot or activity</li>
-          <li>Coffee shop or cafe</li>
+        
+        <h3>Getting There by Air ✈️</h3>
+        <p style="line-height:1.8;margin-bottom:0.5rem;">
+          If you are flying in, several regional airports are within easy driving distance:
+        </p>
+        <ul style="line-height:2;list-style-type:none;padding-left:0.5rem;opacity:0.9;">
+          <li>• <strong>Limoges Airport (LIG):</strong> ~1 hour drive</li>
+          <li>• <strong>Poitiers Airport (PIS):</strong> ~1 hour drive</li>
+          <li>• <strong>Bergerac Airport (EGC):</strong> ~1 hour 30 min drive</li>
+          <li>• <strong>Bordeaux Airport (BOD):</strong> ~1 hour 45 min drive</li>
         </ul>
+        <p style="line-height:1.8;margin-top:1rem;">
+          We recommend renting a car at the airport or train station for the easiest travel around the beautiful Charente countryside!
+        </p>
+        
+        <div class="divider"></div>
+        
+        <h3>Accommodations 🏨</h3>
+        <p style="line-height:1.8;">
+          We are thrilled to share that <strong>we are hosting everyone on-site</strong> at Château de la Couronne! 
+          You do not need to book a separate hotel. We will be reaching out directly with details regarding your room assignment and stay at the estate.
+        </p>
       </div>
     </section>
   `,
@@ -228,6 +358,25 @@ function navigate(page) {
   if (page === 'music-requests') initMusicForm();
   if (page === 'faq') initFAQ();
 
+  // Re-render Pinterest widgets if embedded boards are present
+  if (page === 'dress-code' || page === 'schedule') {
+    const renderPins = () => {
+      if (window.PinUtils && window.PinUtils.build) {
+        window.PinUtils.build();
+      } else if (!document.getElementById('pinterest-js')) {
+        const script = document.createElement('script');
+        script.id = 'pinterest-js';
+        script.src = 'https://assets.pinterest.com/js/pinit.js';
+        script.async = true;
+        document.body.appendChild(script);
+      }
+    };
+    renderPins();
+    setTimeout(renderPins, 500);
+    setTimeout(renderPins, 1500);
+    setTimeout(renderPins, 3000);
+  }
+
   // Scroll to top
   window.scrollTo(0, 0);
 }
@@ -255,6 +404,7 @@ function initMusicForm() {
     try {
       await fetch(GOOGLE_SCRIPT_URL, {
         method: 'POST',
+        mode: 'no-cors',
         body: JSON.stringify(data),
       });
       msg.textContent = 'Thanks! Your song has been added to our list 🎶';
