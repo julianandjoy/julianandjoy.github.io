@@ -129,29 +129,31 @@ const pages = {
   `,
 
   venue: `
-    <section class="page-section" style="padding-bottom: 6rem;">
-      <h2 class="page-title">Venue</h2>
-      <div class="divider"></div>
+    <section class="page-section" style="padding: 4.5rem 0 0 0; max-width: 100%;">
+      <h2 class="page-title" style="margin-bottom: 0;">Venue</h2>
+      <div class="divider" style="margin-bottom: 2rem;"></div>
       
-      <div class="venue-split-layout">
-        <div class="venue-image-sticky">
-          <!-- High-quality French chateau photo -->
-          <img src="https://images.unsplash.com/photo-1508849789987-4e5333c12b78?auto=format&fit=crop&w=1600&q=90" alt="Château de la Couronne" />
-        </div>
-        
-        <div class="venue-info-scroll">
-          <h3 style="font-size: 2.2rem; font-family: var(--font-display); color: var(--color-accent); margin-bottom: 0.5rem; margin-top: 0;">Château de la Couronne</h3>
-          <p style="opacity: 0.8; font-size: 1.1rem; margin-bottom: 1.5rem; font-style: italic;">Marthon, France</p>
-          <div class="divider-small" style="margin: 0 0 1.5rem 0;"></div>
+      <!-- Interactive Scroll Track (Apple Style) -->
+      <div class="venue-interactive-track">
+        <div class="venue-sticky-viewport">
+          <div class="venue-image-panel">
+            <img src="https://images.unsplash.com/photo-1508849789987-4e5333c12b78?auto=format&fit=crop&w=1600&q=90" alt="Château de la Couronne" />
+          </div>
           
-          <p style="line-height: 1.9; font-size: 1.05rem; opacity: 0.9; margin-bottom: 1.5rem;">
-            We are thrilled to host our wedding weekend at the enchanting Château de la Couronne. 
-            Nestled in the picturesque French countryside, this stunning 16th-century private estate blends timeless historic architecture with luxurious modern design.
-          </p>
-          <p style="line-height: 1.9; font-size: 1.05rem; opacity: 0.9; margin-bottom: 2rem;">
-            The château is surrounded by private rolling lawns, a walled garden, and a heated swimming pool. Inside, you'll find large stylish salons, billiards, and boutique suites where all of our guests will be staying.
-          </p>
-          <a href="https://chateaudelacouronne.com" target="_blank" class="btn" style="display: inline-block;">Visit Official Website</a>
+          <div class="venue-text-panel">
+            <h3 style="font-size: 2.2rem; font-family: var(--font-display); color: var(--color-accent); margin-bottom: 0.5rem; margin-top: 0;">Château de la Couronne</h3>
+            <p style="opacity: 0.8; font-size: 1.1rem; margin-bottom: 1.5rem; font-style: italic;">Marthon, France</p>
+            <div class="divider-small" style="margin: 0 0 1.5rem 0;"></div>
+            
+            <p style="line-height: 1.9; font-size: 1.05rem; opacity: 0.9; margin-bottom: 1.5rem;">
+              We are thrilled to host our wedding weekend at the enchanting Château de la Couronne. 
+              Nestled in the picturesque French countryside, this stunning 16th-century private estate blends timeless historic architecture with luxurious modern design.
+            </p>
+            <p style="line-height: 1.9; font-size: 1.05rem; opacity: 0.9; margin-bottom: 2rem;">
+              The château is surrounded by private rolling lawns, a walled garden, and a heated swimming pool. Inside, you'll find large stylish salons, billiards, and boutique suites where all of our guests will be staying.
+            </p>
+            <a href="https://chateaudelacouronne.com" target="_blank" class="btn" style="display: inline-block;">Visit Official Website</a>
+          </div>
         </div>
       </div>
     </section>
@@ -386,7 +388,7 @@ function navigate(page) {
   // Re-attach event listeners / initialize components for dynamic pages
   if (page === 'music-requests') initMusicForm();
   if (page === 'faq') initFAQ();
-  if (page === 'venue') initVenueLayout();
+  if (page === 'venue') initVenueScrollStory();
 
   // Re-render Pinterest widgets if embedded boards are present
   if (page === 'dress-code' || page === 'schedule') {
@@ -471,29 +473,73 @@ function initFAQ() {
 }
 
 // Dynamic sticky split panel logic on scroll
-function initVenueLayout() {
-  const layout = document.querySelector('.venue-split-layout');
-  if (!layout) return;
+// Dynamic scroll-driven image morphing and storytelling logic (Apple style)
+function initVenueScrollStory() {
+  const track = document.querySelector('.venue-interactive-track');
+  const viewport = document.querySelector('.venue-sticky-viewport');
+  const imgWrapper = document.querySelector('.venue-image-panel');
+  const textWrapper = document.querySelector('.venue-text-panel');
+  if (!track || !viewport || !imgWrapper || !textWrapper) return;
 
   const handleScroll = () => {
-    // If mobile viewports, remove active classes and let stack layout run
+    // Disable interactive scroll story on mobile viewports for clean usability
     if (window.innerWidth <= 900) {
-      layout.classList.remove('split-active');
+      imgWrapper.style.transform = '';
+      imgWrapper.style.width = '';
+      imgWrapper.style.height = '';
+      textWrapper.style.opacity = '';
+      textWrapper.style.transform = '';
       return;
     }
 
-    // Morph layout to split column state once scrolled down 80px
-    if (window.scrollY > 80) {
-      layout.classList.add('split-active');
+    const rect = track.getBoundingClientRect();
+    const viewHeight = window.innerHeight;
+
+    // Calculate progress ratio (0 to 1) of scrolling through the track
+    const startY = 90; // Top navigation bar height offset
+    const totalDuration = rect.height - (viewHeight - startY);
+    const elapsed = -rect.top + startY;
+
+    let ratio = elapsed / totalDuration;
+    ratio = Math.max(0, Math.min(1, ratio));
+
+    // 1. Image Morphing (from 0.0 to 0.45 scroll progress)
+    let imgProgress = ratio / 0.45;
+    imgProgress = Math.max(0, Math.min(1, imgProgress));
+
+    // Width morphs from 90% to 35%
+    const imgWidth = 90 - (imgProgress * 55);
+    // Height morphs from 75vh to 60vh
+    const imgHeight = 75 - (imgProgress * 15);
+    // Slide left viewport coordinate translation
+    const imgTranslateX = imgProgress * -24;
+
+    imgWrapper.style.width = `${imgWidth}%`;
+    imgWrapper.style.height = `${imgHeight}vh`;
+    imgWrapper.style.transform = `translate3d(${imgTranslateX}vw, 0, 0)`;
+
+    // 2. Text storytelling fade & slide in (from 0.35 to 0.8 scroll progress)
+    if (ratio > 0.35) {
+      let textProgress = (ratio - 0.35) / 0.45;
+      textProgress = Math.max(0, Math.min(1, textProgress));
+
+      textWrapper.style.opacity = textProgress;
+      textWrapper.style.visibility = 'visible';
+      
+      const textTranslateY = (1 - textProgress) * 40; // Slide up offset
+      const textTranslateX = 14 * textProgress; // Slide right offset next to pinned image
+      textWrapper.style.transform = `translate3d(${textTranslateX}vw, ${textTranslateY}px, 0)`;
     } else {
-      layout.classList.remove('split-active');
+      textWrapper.style.opacity = 0;
+      textWrapper.style.visibility = 'hidden';
+      textWrapper.style.transform = 'translate3d(0, 40px, 0)';
     }
   };
 
-  // Bind the scroll event listener
+  // Bind scroll event listener
   scrollListener = handleScroll;
   window.addEventListener('scroll', scrollListener);
-  // Trigger once initially to check scroll state on load
+  // Trigger once initially to position layouts on load
   handleScroll();
 }
 

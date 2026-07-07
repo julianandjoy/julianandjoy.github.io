@@ -694,84 +694,90 @@ a:hover {
   }
 }
 
-/* --- Venue Sticky Split Screen Transition --- */
-.venue-split-layout {
-  display: flex;
-  gap: 4.5rem;
-  max-width: 1300px;
-  margin: 3rem auto 6rem;
-  padding: 0 2rem;
+/* --- Venue Apple-Style Interactive Sticky Scroll Showcase --- */
+.venue-interactive-track {
   position: relative;
-  align-items: flex-start;
-  transition: all 0.6s cubic-bezier(0.1, 0.8, 0.3, 1);
+  width: 100%;
+  height: 200vh; /* Determines length of the scrolling interaction */
+  background: transparent;
+}
+
+.venue-sticky-viewport {
+  position: sticky;
+  top: 90px; /* Sits below top navigation bar */
+  height: calc(100vh - 90px);
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   box-sizing: border-box;
 }
 
-.venue-image-sticky {
-  position: sticky;
-  top: 110px; /* Sits cleanly below navigation bar */
-  width: 100%;
+.venue-image-panel {
+  position: absolute;
+  width: 90%;
   height: 75vh;
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.2);
-  transition: width 0.6s cubic-bezier(0.1, 0.8, 0.3, 1), height 0.6s cubic-bezier(0.1, 0.8, 0.3, 1);
-  flex-shrink: 0;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.25);
+  z-index: 2;
   background: #1f2113;
+  will-change: transform, width, height;
 }
 
-.venue-image-sticky img {
+.venue-image-panel img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
 }
 
-.venue-info-scroll {
-  width: 0%;
+.venue-text-panel {
+  position: absolute;
+  width: 40%;
   opacity: 0;
   visibility: hidden;
-  transition: width 0.6s cubic-bezier(0.1, 0.8, 0.3, 1), opacity 0.4s ease, visibility 0.4s;
+  z-index: 1;
   text-align: left;
-  padding-top: 1rem;
-}
-
-/* Active split state when user scrolls down */
-.venue-split-layout.split-active .venue-image-sticky {
-  width: 35%; /* Takes up roughly 1/3 of space */
-  height: 60vh;
-}
-
-.venue-split-layout.split-active .venue-info-scroll {
-  width: 60%; /* Takes up roughly 2/3 of space */
-  opacity: 1;
-  visibility: visible;
+  will-change: transform, opacity;
 }
 
 @media (max-width: 900px) {
-  .venue-split-layout {
-    flex-direction: column;
-    gap: 2rem;
-    padding: 0 1.5rem;
-    margin: 2rem auto;
+  .venue-interactive-track {
+    height: auto !important; /* Disables sticky effect on mobile viewports */
   }
-  .venue-image-sticky {
-    position: relative;
+
+  .venue-sticky-viewport {
+    position: relative !important;
     top: 0 !important;
+    height: auto !important;
+    flex-direction: column;
+    padding: 0 1.5rem 3rem;
+  }
+
+  .venue-image-panel {
+    position: relative !important;
     width: 100% !important;
     height: 400px !important;
+    transform: none !important;
+    margin-bottom: 2rem;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
   }
-  .venue-info-scroll {
+
+  .venue-text-panel {
+    position: relative !important;
     width: 100% !important;
     opacity: 1 !important;
     visibility: visible !important;
+    transform: none !important;
     text-align: center;
-    padding-top: 0;
+    padding: 0 1rem;
   }
 }
 
 @media (max-width: 480px) {
-  .venue-image-sticky {
+  .venue-image-panel {
     height: 280px !important;
   }
 }
