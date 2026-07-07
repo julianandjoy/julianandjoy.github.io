@@ -619,13 +619,13 @@ function initHomeCollageScroll() {
 
     const rect = track.getBoundingClientRect();
     const viewHeight = window.innerHeight;
+    const startY = 90; // Top navigation bar height offset
 
-    // Start tracking scroll ratio (0 to 1) from entry bottom to exit top
-    const totalHeight = viewHeight + rect.height;
-    const scrolled = viewHeight - rect.top;
-
-    let ratio = scrolled / totalHeight;
-    ratio = Math.max(0, Math.min(1, ratio)); // 0 to 1
+    // Map the scroll ratio (0 to 1) to span exactly the active sticky pinning window.
+    // Starts when rect.top = 90px (just pinned) and ends when rect.bottom = viewHeight (unpinning).
+    const pinRange = rect.height - viewHeight + startY;
+    let ratio = (startY - rect.top) / pinRange;
+    ratio = Math.max(0, Math.min(1, ratio)); // Clamp between 0 and 1
 
     // Even 3D Tornado parameters
     const totalCards = cards.length;
