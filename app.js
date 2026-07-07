@@ -6,7 +6,7 @@ const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzVMnyNSJWTsg
 // Page content templates
 const pages = {
   home: `
-    <section class="hero">
+    <section class="hero" style="margin-bottom: 2rem;">
       <p class="hero-subtitle">Together with their families</p>
       <div class="hero-logo-container" style="margin: 2rem auto 2.5rem; max-width: 320px;">
         <img src="images/JandJ_logo.png" alt="Julian &amp; Joy Logo" style="width: 100%; height: auto; display: block; margin: 0 auto;" />
@@ -15,62 +15,13 @@ const pages = {
       <p class="hero-date">May 22, 2027</p>
       <p class="hero-location">City, State</p>
     </section>
-    <section class="page-section">
-      <h2>Our Story</h2>
-      <div class="divider-small"></div>
-      <p style="max-width:600px;margin:0 auto;line-height:1.8;">
-        Our journey began with a chance meeting and quickly grew into something
-        special, filled with laughter, adventures, and unforgettable memories.
-        As we prepare to say "I do," we're excited to celebrate this next
-        chapter with our loved ones.
-      </p>
-    </section>
-    
-    <section class="page-section" style="border-top: 1px solid rgba(236, 233, 213, 0.15); padding-top: 5rem;">
-      <h2>Our Elopement</h2>
-      <div class="divider-small"></div>
-      <p style="max-width:600px;margin:0 auto 2rem;line-height:1.8;">
-        Before the main celebration, we ran away to capture these intimate moments together. Click the arrows or let the slides rotate to browse through some of our favorite memories.
-      </p>
 
-      <div class="carousel-container" id="elopement-carousel">
-        <!-- Slide 1 (Shows Photo 1 & 2 side-by-side) -->
-        <div class="carousel-slide active">
-          <div class="carousel-slide-inner">
-            <div class="carousel-image-wrapper">
-              <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1000&q=80" alt="Elopement Photo 1" />
-            </div>
-            <div class="carousel-image-wrapper">
-              <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1000&q=80" alt="Elopement Photo 2" />
-            </div>
-          </div>
-        </div>
-        <!-- Slide 2 (Shows Photo 3 & 4 side-by-side) -->
-        <div class="carousel-slide">
-          <div class="carousel-slide-inner">
-            <div class="carousel-image-wrapper">
-              <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=1000&q=80" alt="Elopement Photo 3" />
-            </div>
-            <div class="carousel-image-wrapper">
-              <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=1000&q=80" alt="Elopement Photo 4" />
-            </div>
-          </div>
-        </div>
-
-        <!-- Arrows -->
-        <button class="carousel-btn carousel-prev">&#10094;</button>
-        <button class="carousel-btn carousel-next">&#10095;</button>
-
-        <!-- Indicators -->
-        <div class="carousel-indicators">
-          <span class="carousel-dot active" data-slide="0"></span>
-          <span class="carousel-dot" data-slide="1"></span>
-        </div>
+    <div style="padding: 0 2rem 4rem;">
+      <div class="scroll-image-container">
+        <!-- Swap the src with your actual high-quality elopement photo! -->
+        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1600&q=90" class="parallax-img" alt="Our Elopement" />
       </div>
-      <p style="font-style: italic; opacity: 0.6; margin-top: 1.5rem; font-size: 0.85rem;">
-        *Tip: You can easily swap these placeholders with your actual photos inside app.js!
-      </p>
-    </section>
+    </div>
   `,
 
   schedule: `
@@ -78,93 +29,90 @@ const pages = {
       <h2 class="page-title">Schedule of Events</h2>
       <div class="divider"></div>
       
-      <h3 class="day-title" style="margin-top: 2rem; margin-bottom: 1.5rem; font-weight: 400;">Day 1 (5/21)</h3>
-      
-      <div class="event-card">
-        <h3>Check In</h3>
-        <p class="event-time">16:00</p>
-        <p class="event-desc">Welcome to Chateau de la Couronne! Settle in, explore the chateau, and make yourself comfortable.</p>
-      </div>
-      
-      <div class="event-card">
-        <h3>Welcome Dinner</h3>
-        <p class="event-time">18:00</p>
-        <p class="event-desc">Join us for a dinner to kick off the weekend! We’ll have welcome drinks, snax, and pizzas!</p>
-        <p class="event-desc" style="font-size: 0.95rem; margin-top: 0.75rem;">
-          <strong style="color: var(--color-accent);">Dress Code:</strong> Casual &amp; Comfortable — <a href="#dress-code" style="text-decoration: underline;">View attire guidelines &amp; mood boards</a>
-        </p>
-      </div>
-      
-      <div class="divider-small"></div>
-      
-      <h3 class="day-title" style="margin-top: 2rem; margin-bottom: 1.5rem; font-weight: 400;">Day 2 (5/22)</h3>
-      
-      <div class="event-card">
-        <h3>Brunch</h3>
-        <p class="event-time">Morning</p>
-        <p class="event-desc">Enjoy a casual brunch on the property! We’ll have an assortment of options as a buffet.</p>
-        <p class="event-desc" style="font-size: 0.9rem; opacity: 0.8;">
-          <strong>Dress Code:</strong> Come in whatever you are comfortable in!
-        </p>
-      </div>
-      
-      <div class="event-card">
-        <h3>Wedding Ceremony</h3>
-        <p class="event-time">Afternoon Onwards</p>
-        <p class="event-desc">Julian and Joy get married! We make it official with all the people we love as witnesses.</p>
-        <p class="event-desc" style="font-size: 0.95rem; margin-top: 0.75rem;">
-          <strong style="color: var(--color-accent);">Dress Code:</strong> Semi-Formal / Cocktail Attire — <a href="#dress-code" style="text-decoration: underline;">View attire guidelines &amp; mood boards</a>
-        </p>
-      </div>
-      
-      <div class="event-card">
-        <h3>Cocktail Hour</h3>
-        <p class="event-time">Afternoon</p>
-        <p class="event-desc">There will be drinks, snacks, and live music!</p>
-      </div>
-      
-      <div class="event-card">
-        <h3>Seated Dinner</h3>
-        <p class="event-time">Evening</p>
-        <p class="event-desc">Ready for some food? We got you!</p>
-      </div>
-      
-      <div class="event-card">
-        <h3>Late Night Dancing</h3>
-        <p class="event-time">Late Night</p>
-        <p class="event-desc">weeeeeee</p>
+      <h3 class="day-title" style="margin-top: 2.5rem; margin-bottom: 1.5rem; font-weight: 400; font-size: 1.6rem; color: var(--color-accent);">Day 1 (5/21)</h3>
+      <div class="events-grid">
+        <div class="event-card">
+          <h3>Check In</h3>
+          <p class="event-time">16:00</p>
+          <p class="event-desc">Welcome to Chateau de la Couronne! Settle in, explore the chateau, and make yourself comfortable.</p>
+        </div>
+        <div class="event-card">
+          <h3>Welcome Dinner</h3>
+          <p class="event-time">18:00</p>
+          <p class="event-desc">Join us for a dinner to kick off the weekend! We’ll have welcome drinks, snax, and pizzas!</p>
+          <p class="event-desc" style="font-size: 0.95rem; margin-top: 0.75rem;">
+            <strong style="color: var(--color-accent);">Dress Code:</strong> Casual &amp; Comfortable — <a href="#dress-code">View attire guidelines &amp; mood boards</a>
+          </p>
+        </div>
       </div>
       
       <div class="divider-small"></div>
       
-      <h3 class="day-title" style="margin-top: 2rem; margin-bottom: 1.5rem; font-weight: 400;">Day 3 (5/23)</h3>
-      
-      <div class="event-card">
-        <h3>Breakfast</h3>
-        <p class="event-time">Morning</p>
-        <p class="event-desc">Nothing cures a hangover better than a hearty breakfast (or some more drinks - later)</p>
-      </div>
-      
-      <div class="event-card">
-        <h3>Pool Party</h3>
-        <p class="event-time">Afternoon</p>
-        <p class="event-desc">Celebrate with us on our first day as a married couple! Relax and recover by the pool while enjoying some BBQ, games, and drinks!</p>
-      </div>
-      
-      <div class="event-card">
-        <h3>Game Night</h3>
-        <p class="event-time">Evening</p>
-        <p class="event-desc">It’s time! Enjoy some light bites and drinks and we do what we do best - gamble! Join in on a casual night of gambling - we’ll have mahjong, cards, and poker chips!</p>
+      <h3 class="day-title" style="margin-top: 2.5rem; margin-bottom: 1.5rem; font-weight: 400; font-size: 1.6rem; color: var(--color-accent);">Day 2 (5/22)</h3>
+      <div class="events-grid">
+        <div class="event-card">
+          <h3>Brunch</h3>
+          <p class="event-time">Morning</p>
+          <p class="event-desc">Enjoy a casual brunch on the property! We’ll have an assortment of options as a buffet.</p>
+          <p class="event-desc" style="font-size: 0.9rem; opacity: 0.8; margin-top: 0.5rem;">
+            <strong>Dress Code:</strong> Come in whatever you are comfortable in!
+          </p>
+        </div>
+        <div class="event-card">
+          <h3>Wedding Ceremony</h3>
+          <p class="event-time">Afternoon Onwards</p>
+          <p class="event-desc">Julian and Joy get married! We make it official with all the people we love as witnesses.</p>
+          <p class="event-desc" style="font-size: 0.95rem; margin-top: 0.75rem;">
+            <strong style="color: var(--color-accent);">Dress Code:</strong> Semi-Formal / Cocktail Attire — <a href="#dress-code">View attire guidelines &amp; mood boards</a>
+          </p>
+        </div>
+        <div class="event-card">
+          <h3>Cocktail Hour</h3>
+          <p class="event-time">Afternoon</p>
+          <p class="event-desc">There will be drinks, snacks, and live music!</p>
+        </div>
+        <div class="event-card">
+          <h3>Seated Dinner</h3>
+          <p class="event-time">Evening</p>
+          <p class="event-desc">Ready for some food? We got you!</p>
+        </div>
+        <div class="event-card">
+          <h3>Late Night Dancing</h3>
+          <p class="event-time">Late Night</p>
+          <p class="event-desc">weeeeeee</p>
+        </div>
       </div>
       
       <div class="divider-small"></div>
       
-      <h3 class="day-title" style="margin-top: 2rem; margin-bottom: 1.5rem; font-weight: 400;">Day 4 (5/24)</h3>
+      <h3 class="day-title" style="margin-top: 2.5rem; margin-bottom: 1.5rem; font-weight: 400; font-size: 1.6rem; color: var(--color-accent);">Day 3 (5/23)</h3>
+      <div class="events-grid">
+        <div class="event-card">
+          <h3>Breakfast</h3>
+          <p class="event-time">Morning</p>
+          <p class="event-desc">Nothing cures a hangover better than a hearty breakfast (or some more drinks - later)</p>
+        </div>
+        <div class="event-card">
+          <h3>Pool Party</h3>
+          <p class="event-time">Afternoon</p>
+          <p class="event-desc">Celebrate with us on our first day as a married couple! Relax and recover by the pool while enjoying some BBQ, games, and drinks!</p>
+        </div>
+        <div class="event-card">
+          <h3>Game Night</h3>
+          <p class="event-time">Evening</p>
+          <p class="event-desc">It’s time! Enjoy some light bites and drinks and we do what we do best - gamble! Join in on a casual night of gambling - we’ll have mahjong, cards, and poker chips!</p>
+        </div>
+      </div>
       
-      <div class="event-card">
-        <h3>Breakfast &amp; Check Out</h3>
-        <p class="event-time">Morning</p>
-        <p class="event-desc">Check out!</p>
+      <div class="divider-small"></div>
+      
+      <h3 class="day-title" style="margin-top: 2.5rem; margin-bottom: 1.5rem; font-weight: 400; font-size: 1.6rem; color: var(--color-accent);">Day 4 (5/24)</h3>
+      <div class="events-grid">
+        <div class="event-card">
+          <h3>Breakfast &amp; Check Out</h3>
+          <p class="event-time">Morning</p>
+          <p class="event-desc">Check out!</p>
+        </div>
       </div>
     </section>
   `,
@@ -176,39 +124,9 @@ const pages = {
       <h3>Château de la Couronne</h3>
       <p style="margin-bottom: 1.5rem; opacity: 0.8;">Marthon, France</p>
       
-      <div class="carousel-container" id="venue-carousel">
-        <!-- Slide 1 (Exterior & Aerial) -->
-        <div class="carousel-slide active">
-          <div class="carousel-slide-inner">
-            <div class="carousel-image-wrapper">
-              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7Cv6g5LBm8Xh-0P9adhm-QomRqCEaLNONemB-4f0sug&s=10" alt="Château Exterior" />
-            </div>
-            <div class="carousel-image-wrapper">
-              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFYNpOpRgpT4O96iZRmRGHpcghuZD05sE-xGiYTCWoqQ&s=10" alt="Château Aerial" />
-            </div>
-          </div>
-        </div>
-        <!-- Slide 2 (Pool & Entrance) -->
-        <div class="carousel-slide">
-          <div class="carousel-slide-inner">
-            <div class="carousel-image-wrapper">
-              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSd12C6jHr2Uqo0hhKxntirUjuHP4cN_EbWRzZcLL8niA&s" alt="Château Pool &amp; Garden" />
-            </div>
-            <div class="carousel-image-wrapper">
-              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPGjTeeJzw6_yIdqb1oToIvxRMC2ParkdFX46X9Co9ig&s=10" alt="Château Entrance" />
-            </div>
-          </div>
-        </div>
-
-        <!-- Arrows -->
-        <button class="carousel-btn carousel-prev">&#10094;</button>
-        <button class="carousel-btn carousel-next">&#10095;</button>
-
-        <!-- Indicators -->
-        <div class="carousel-indicators">
-          <span class="carousel-dot active" data-slide="0"></span>
-          <span class="carousel-dot" data-slide="1"></span>
-        </div>
+      <div class="scroll-image-container">
+        <!-- High-quality French chateau photo -->
+        <img src="https://images.unsplash.com/photo-1508849789987-4e5333c12b78?auto=format&fit=crop&w=1600&q=90" class="parallax-img" alt="Château de la Couronne" />
       </div>
       
       <div class="divider-small"></div>
@@ -349,49 +267,52 @@ const pages = {
       <h2 class="page-title">Travel &amp; Accommodations</h2>
       <div class="divider"></div>
       
-      <div class="info-block">
-        <div style="text-align:center;margin-bottom:2rem;">
-          <h3>Venue Address</h3>
-          <p style="font-size:1.2rem;margin-bottom:0.2rem;"><strong>Château de la Couronne</strong></p>
-          <p>16380 Marthon, France</p>
-          <p style="margin-top:0.5rem;font-size:0.85rem;opacity:0.8;font-style:italic;">
-            ⚠️ Please ensure your GPS is set to <strong>Marthon (16380)</strong>, as there is another town called "La Couronne" nearby!
+      <div class="travel-layout" style="display: flex; gap: 3.5rem; justify-content: center; flex-wrap: wrap; text-align: left; margin-top: 2rem;">
+        <!-- Left Column: Getting There -->
+        <div style="flex: 1 1 450px; max-width: 600px;">
+          <h3 style="color: var(--color-accent); border-bottom: 1px solid rgba(236, 233, 213, 0.1); padding-bottom: 0.5rem; margin-bottom: 1.5rem; font-size: 1.4rem;">Getting There</h3>
+          
+          <h4 style="margin-bottom: 0.5rem; font-size: 1.1rem; color: var(--color-text);">By Train 🚆</h4>
+          <p style="line-height:1.8; margin-bottom: 2rem; opacity: 0.9;">
+            The closest major train station is <strong>Angoulême TGV Station</strong>, located about a 25-minute drive from the château. 
+            There are direct high-speed TGV trains from Paris (Gare Montparnasse) to Angoulême that take approximately <strong>1 hour and 45 minutes</strong>. 
+            From the station, you can easily take a taxi or rent a car to reach the venue.
           </p>
-          <a href="https://maps.google.com/?q=Chateau+de+la+Couronne+16380+Marthon+France" target="_blank" class="btn" style="margin-top:1rem;display:inline-block;">Open in Google Maps</a>
+          
+          <h4 style="margin-bottom: 0.5rem; font-size: 1.1rem; color: var(--color-text);">By Air ✈️</h4>
+          <p style="line-height:1.8; margin-bottom: 0.75rem; opacity: 0.9;">
+            If you are flying in, several regional airports are within easy driving distance:
+          </p>
+          <ul style="line-height:2; list-style-type:none; padding-left:0; opacity:0.9; margin-bottom: 1.5rem;">
+            <li>• <strong>Limoges Airport (LIG):</strong> ~1 hour drive</li>
+            <li>• <strong>Poitiers Airport (PIS):</strong> ~1 hour drive</li>
+            <li>• <strong>Bergerac Airport (EGC):</strong> ~1 hour 30 min drive</li>
+            <li>• <strong>Bordeaux Airport (BOD):</strong> ~1 hour 45 min drive</li>
+          </ul>
+          <p style="line-height:1.8; font-style: italic; opacity:0.85; border-left: 2px solid var(--color-accent); padding-left: 1rem; color: var(--color-accent);">
+            We recommend renting a car at the airport or train station for the easiest travel around the beautiful Charente countryside!
+          </p>
         </div>
-        
-        <div class="divider"></div>
-        
-        <h3>Getting There by Train 🚆</h3>
-        <p style="line-height:1.8;">
-          The closest major train station is <strong>Angoulême TGV Station</strong>, located about a 25-minute drive from the château. 
-          There are direct high-speed TGV trains from Paris (Gare Montparnasse) to Angoulême that take approximately <strong>1 hour and 45 minutes</strong>. 
-          From the station, you can easily take a taxi or rent a car to reach the venue.
-        </p>
-        
-        <div class="divider"></div>
-        
-        <h3>Getting There by Air ✈️</h3>
-        <p style="line-height:1.8;margin-bottom:0.5rem;">
-          If you are flying in, several regional airports are within easy driving distance:
-        </p>
-        <ul style="line-height:2;list-style-type:none;padding-left:0.5rem;opacity:0.9;">
-          <li>• <strong>Limoges Airport (LIG):</strong> ~1 hour drive</li>
-          <li>• <strong>Poitiers Airport (PIS):</strong> ~1 hour drive</li>
-          <li>• <strong>Bergerac Airport (EGC):</strong> ~1 hour 30 min drive</li>
-          <li>• <strong>Bordeaux Airport (BOD):</strong> ~1 hour 45 min drive</li>
-        </ul>
-        <p style="line-height:1.8;margin-top:1rem;">
-          We recommend renting a car at the airport or train station for the easiest travel around the beautiful Charente countryside!
-        </p>
-        
-        <div class="divider"></div>
-        
-        <h3>Accommodations 🏨</h3>
-        <p style="line-height:1.8;">
-          We are thrilled to share that <strong>we are hosting everyone on-site</strong> at Château de la Couronne! 
-          You do not need to book a separate hotel. We will be reaching out directly with details regarding your room assignment and stay at the estate.
-        </p>
+
+        <!-- Right Column: Venue Address & Accommodations -->
+        <div style="flex: 1 1 450px; max-width: 600px;">
+          <h3 style="color: var(--color-accent); border-bottom: 1px solid rgba(236, 233, 213, 0.1); padding-bottom: 0.5rem; margin-bottom: 1.5rem; font-size: 1.4rem;">Venue &amp; Stay</h3>
+          
+          <div style="margin-bottom: 3rem;">
+            <h4 style="margin-bottom: 0.3rem; font-size: 1.1rem; color: var(--color-text);">Château de la Couronne</h4>
+            <p style="margin-bottom: 0.5rem; opacity: 0.9;">16380 Marthon, France</p>
+            <p style="font-size:0.85rem; opacity:0.8; font-style:italic; margin-bottom:1.25rem; color:#bdc786;">
+              ⚠️ Please ensure your GPS is set to Marthon (16380), as there is another town named "La Couronne" nearby!
+            </p>
+            <a href="https://maps.google.com/?q=Chateau+de+la+Couronne+16380+Marthon+France" target="_blank" class="btn" style="display:inline-block;">Open in Google Maps</a>
+          </div>
+
+          <h4 style="margin-bottom: 0.5rem; font-size: 1.1rem; color: var(--color-text);">Accommodations 🏨</h4>
+          <p style="line-height:1.8; opacity: 0.9;">
+            We are thrilled to share that <strong>we are hosting everyone on-site</strong> at Château de la Couronne! 
+            You do not need to book a separate hotel. We will be reaching out directly with details regarding your room assignment and stay at the estate.
+          </p>
+        </div>
       </div>
     </section>
   `,
@@ -400,26 +321,28 @@ const pages = {
     <section class="page-section">
       <h2 class="page-title">Registry</h2>
       <div class="divider"></div>
-      <p style="max-width:500px;margin:0 auto 2.5rem;line-height:1.8;">
-        Your presence is the only present we need. However, if you'd like to give a gift,
-        we've registered at the following places:
+      <p style="max-width:600px;margin:0 auto;line-height:1.8;">
+        Your presence is the only present we need. However, if you'd like to give a gift, we've registered at the following places:
       </p>
-      <div class="registry-card">
-        <h3>Registry Name</h3>
-        <p>Kitchen, home, and entertaining essentials.</p>
-        <a href="#" class="btn">View Registry</a>
-      </div>
-      <div class="registry-card">
-        <h3>Honeymoon Fund</h3>
-        <p>Help us create unforgettable memories on our honeymoon.</p>
-        <a href="#" class="btn">View Registry</a>
+      
+      <div class="registry-container">
+        <div class="registry-card">
+          <h3>Registry Name</h3>
+          <p>Kitchen, home, and entertaining essentials.</p>
+          <a href="#" class="btn">View Registry</a>
+        </div>
+        <div class="registry-card">
+          <h3>Honeymoon Fund</h3>
+          <p>Help us create unforgettable memories on our honeymoon.</p>
+          <a href="#" class="btn">View Registry</a>
+        </div>
       </div>
     </section>
   `,
 };
 
-// Global tracker for active auto-play sliders
-let activeCarousels = [];
+// Global scroll event listener reference
+let scrollListener = null;
 
 // Router
 function navigate(page) {
@@ -431,9 +354,11 @@ function navigate(page) {
   void app.offsetWidth; // Force layout recalculation to reset CSS animation
   app.classList.add('fade-in');
 
-  // Stop previous slide rotations to prevent memory leaks
-  activeCarousels.forEach(intervalId => clearInterval(intervalId));
-  activeCarousels = [];
+  // Clean up scroll listeners to prevent duplication
+  if (scrollListener) {
+    window.removeEventListener('scroll', scrollListener);
+    scrollListener = null;
+  }
 
   // Update active nav link
   document.querySelectorAll('.nav-link').forEach((link) => {
@@ -443,7 +368,7 @@ function navigate(page) {
   // Re-attach event listeners / initialize components for dynamic pages
   if (page === 'music-requests') initMusicForm();
   if (page === 'faq') initFAQ();
-  if (page === 'home' || page === 'venue') initCarousels();
+  if (page === 'home' || page === 'venue') initScrollParallax();
 
   // Re-render Pinterest widgets if embedded boards are present
   if (page === 'dress-code' || page === 'schedule') {
@@ -527,77 +452,39 @@ function initFAQ() {
   });
 }
 
-// Image Carousel Sliders (handles multiple instances)
-function initCarousels() {
-  // Clear any existing active carousels first to prevent memory leaks
-  activeCarousels.forEach(intervalId => clearInterval(intervalId));
-  activeCarousels = [];
+// Dynamic scroll-driven image parallax motion
+function initScrollParallax() {
+  const images = document.querySelectorAll('.parallax-img');
+  if (images.length === 0) return;
 
-  const containers = document.querySelectorAll('.carousel-container');
-  containers.forEach(container => {
-    const slides = container.querySelectorAll('.carousel-slide');
-    const prevBtn = container.querySelector('.carousel-prev');
-    const nextBtn = container.querySelector('.carousel-next');
-    const dots = container.querySelectorAll('.carousel-dot');
+  const handleScrollParallax = () => {
+    const viewHeight = window.innerHeight;
 
-    if (slides.length === 0) return;
+    images.forEach(img => {
+      const container = img.closest('.scroll-image-container');
+      if (!container) return;
 
-    let currentSlide = 0;
-    let intervalId = null;
+      const rect = container.getBoundingClientRect();
+      // Only animate if the container is inside the user's viewport
+      if (rect.top < viewHeight && rect.bottom > 0) {
+        const totalScrollHeight = viewHeight + rect.height;
+        const scrolled = viewHeight - rect.top;
+        const ratio = scrolled / totalScrollHeight; // Ratio moves from 0 to 1
 
-    function showSlide(index) {
-      if (index >= slides.length) currentSlide = 0;
-      else if (index < 0) currentSlide = slides.length - 1;
-      else currentSlide = index;
+        // Horizontal slide X (moves slightly left to right) and vertical parallax Y
+        const shiftX = (ratio - 0.5) * 50; // Slide X offset range
+        const shiftY = (ratio - 0.5) * -35; // Parallax Y offset range
 
-      slides.forEach((slide, i) => {
-        slide.classList.toggle('active', i === currentSlide);
-      });
-
-      dots.forEach((dot, i) => {
-        dot.classList.toggle('active', i === currentSlide);
-      });
-    }
-
-    if (prevBtn) {
-      prevBtn.addEventListener('click', () => {
-        showSlide(currentSlide - 1);
-        resetAutoPlay();
-      });
-    }
-
-    if (nextBtn) {
-      nextBtn.addEventListener('click', () => {
-        showSlide(currentSlide + 1);
-        resetAutoPlay();
-      });
-    }
-
-    dots.forEach(dot => {
-      dot.addEventListener('click', (e) => {
-        const targetIndex = parseInt(e.target.getAttribute('data-slide'), 10);
-        showSlide(targetIndex);
-        resetAutoPlay();
-      });
-    });
-
-    function startAutoPlay() {
-      intervalId = setInterval(() => {
-        showSlide(currentSlide + 1);
-      }, 5000); // 5 seconds per slide for a relaxed look
-      activeCarousels.push(intervalId);
-    }
-
-    function resetAutoPlay() {
-      if (intervalId) {
-        clearInterval(intervalId);
-        activeCarousels = activeCarousels.filter(id => id !== intervalId);
-        startAutoPlay();
+        img.style.transform = `scale(1.15) translate3d(${shiftX}px, ${shiftY}px, 0)`;
       }
-    }
+    });
+  };
 
-    startAutoPlay();
-  });
+  // Bind the scroll event listener
+  scrollListener = handleScrollParallax;
+  window.addEventListener('scroll', scrollListener);
+  // Trigger once initially to position images correctly on load
+  handleScrollParallax();
 }
 
 // Navigation click handlers
