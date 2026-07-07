@@ -36,21 +36,27 @@ const pages = {
       </p>
 
       <div class="carousel-container" id="elopement-carousel">
-        <!-- Slide 1 (Replace src with your actual photo URLs) -->
+        <!-- Slide 1 (Shows Photo 1 & 2 side-by-side) -->
         <div class="carousel-slide active">
-          <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1000&q=80" alt="Elopement Photo 1" />
+          <div class="carousel-slide-inner">
+            <div class="carousel-image-wrapper">
+              <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1000&q=80" alt="Elopement Photo 1" />
+            </div>
+            <div class="carousel-image-wrapper">
+              <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1000&q=80" alt="Elopement Photo 2" />
+            </div>
+          </div>
         </div>
-        <!-- Slide 2 -->
+        <!-- Slide 2 (Shows Photo 3 & 4 side-by-side) -->
         <div class="carousel-slide">
-          <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1000&q=80" alt="Elopement Photo 2" />
-        </div>
-        <!-- Slide 3 -->
-        <div class="carousel-slide">
-          <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=1000&q=80" alt="Elopement Photo 3" />
-        </div>
-        <!-- Slide 4 -->
-        <div class="carousel-slide">
-          <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=1000&q=80" alt="Elopement Photo 4" />
+          <div class="carousel-slide-inner">
+            <div class="carousel-image-wrapper">
+              <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=1000&q=80" alt="Elopement Photo 3" />
+            </div>
+            <div class="carousel-image-wrapper">
+              <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=1000&q=80" alt="Elopement Photo 4" />
+            </div>
+          </div>
         </div>
 
         <!-- Arrows -->
@@ -61,8 +67,6 @@ const pages = {
         <div class="carousel-indicators">
           <span class="carousel-dot active" data-slide="0"></span>
           <span class="carousel-dot" data-slide="1"></span>
-          <span class="carousel-dot" data-slide="2"></span>
-          <span class="carousel-dot" data-slide="3"></span>
         </div>
       </div>
       <p style="font-style: italic; opacity: 0.6; margin-top: 1.5rem; font-size: 0.85rem;">
@@ -175,21 +179,27 @@ const pages = {
       <p style="margin-bottom: 1.5rem; opacity: 0.8;">Marthon, France</p>
       
       <div class="carousel-container" id="venue-carousel">
-        <!-- Slide 1 -->
+        <!-- Slide 1 (Exterior & Aerial) -->
         <div class="carousel-slide active">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7Cv6g5LBm8Xh-0P9adhm-QomRqCEaLNONemB-4f0sug&s=10" alt="Château Exterior" />
+          <div class="carousel-slide-inner">
+            <div class="carousel-image-wrapper">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7Cv6g5LBm8Xh-0P9adhm-QomRqCEaLNONemB-4f0sug&s=10" alt="Château Exterior" />
+            </div>
+            <div class="carousel-image-wrapper">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFYNpOpRgpT4O96iZRmRGHpcghuZD05sE-xGiYTCWoqQ&s=10" alt="Château Aerial" />
+            </div>
+          </div>
         </div>
-        <!-- Slide 2 -->
+        <!-- Slide 2 (Pool & Entrance) -->
         <div class="carousel-slide">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFYNpOpRgpT4O96iZRmRGHpcghuZD05sE-xGiYTCWoqQ&s=10" alt="Château Aerial" />
-        </div>
-        <!-- Slide 3 -->
-        <div class="carousel-slide">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSd12C6jHr2Uqo0hhKxntirUjuHP4cN_EbWRzZcLL8niA&s" alt="Château Pool &amp; Garden" />
-        </div>
-        <!-- Slide 4 -->
-        <div class="carousel-slide">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPGjTeeJzw6_yIdqb1oToIvxRMC2ParkdFX46X9Co9ig&s=10" alt="Château Entrance" />
+          <div class="carousel-slide-inner">
+            <div class="carousel-image-wrapper">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSd12C6jHr2Uqo0hhKxntirUjuHP4cN_EbWRzZcLL8niA&s" alt="Château Pool &amp; Garden" />
+            </div>
+            <div class="carousel-image-wrapper">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPGjTeeJzw6_yIdqb1oToIvxRMC2ParkdFX46X9Co9ig&s=10" alt="Château Entrance" />
+            </div>
+          </div>
         </div>
 
         <!-- Arrows -->
@@ -200,8 +210,6 @@ const pages = {
         <div class="carousel-indicators">
           <span class="carousel-dot active" data-slide="0"></span>
           <span class="carousel-dot" data-slide="1"></span>
-          <span class="carousel-dot" data-slide="2"></span>
-          <span class="carousel-dot" data-slide="3"></span>
         </div>
       </div>
       
