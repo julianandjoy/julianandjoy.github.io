@@ -73,7 +73,11 @@ const pages = {
           <div class="timeline-content">
             <h3>Welcome Dinner</h3>
             <p>Join us for dinner to kick off the celebration weekend! We’ll have welcome drinks, bites, and pizzas!</p>
-            <p class="timeline-dress-code"><strong>Dress Code:</strong> Smart Casual (collared shirts/chinos for men, dresses/dressy separates for women; please, no athletic wear or sneakers)</p>
+            <p class="timeline-dress-code" style="margin-bottom: 0.4rem;"><strong>Dress Code:</strong> Smart Casual (please, no athletic wear or sneakers)</p>
+            <div style="font-size: 0.9rem; opacity: 0.85; line-height: 1.5; margin-left: 0.5rem; border-left: 2px solid var(--color-accent); padding-left: 0.8rem; margin-top: 0.5rem; text-align: left;">
+              <div style="margin-bottom: 0.25rem;"><strong>For Him:</strong> Collared button-up shirts, chinos, or dress pants</div>
+              <div><strong>For Her:</strong> Dresses, summer dresses, or elegant separates</div>
+            </div>
           </div>
         </div>
 
