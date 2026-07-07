@@ -181,7 +181,7 @@ const pages = {
       <div class="venue-interactive-track">
         <div class="venue-sticky-viewport">
           <div class="venue-image-panel">
-            <img src="images/couronne.webp" alt="Château de la Couronne" />
+            <img src="images/Gemini_Generated_Image_6ox6av6ox6av6ox6.jpeg" alt="Château de la Couronne" />
           </div>
           
           <div class="venue-text-panel">
