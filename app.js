@@ -636,9 +636,9 @@ function initHomeCollageScroll() {
       const baseY = (i - ((totalCards - 1) / 2)) * verticalGap;
       
       // Shift the entire helix up as we scroll:
-      // - At ratio = 0: cY is -1580px, mapping card 0 (baseY = -1200px) to yOffset = 380px (out of focus below).
+      // - At ratio = 0: cY is -1380px, mapping card 0 (baseY = -1200px) to yOffset = 180px (out of focus below, but visible).
       // - At ratio = 1: cY is 1200px, mapping card 15 (baseY = 1200px) to yOffset = 0px (perfect center stage spotlight).
-      const cY = -1580 + ratio * 2780;
+      const cY = -1380 + ratio * 2580;
       const yOffset = baseY - cY;
 
       // Lock rotation angle directly to vertical offset distance.
