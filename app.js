@@ -389,6 +389,7 @@ function navigate(page) {
   if (page === 'music-requests') initMusicForm();
   if (page === 'faq') initFAQ();
   if (page === 'venue') initVenueScrollStory();
+  if (page === 'home') initHomeCollageScroll();
 
   // Re-render Pinterest widgets if embedded boards are present
   if (page === 'dress-code' || page === 'schedule') {
@@ -511,8 +512,8 @@ function initVenueScrollStory() {
     const imgWidth = 90 - (imgProgress * 55);
     // Height morphs from 75vh to 60vh
     const imgHeight = 75 - (imgProgress * 15);
-    // Slide left viewport coordinate translation
-    const imgTranslateX = imgProgress * -24;
+    // Slide left viewport coordinate translation (further left for larger gap)
+    const imgTranslateX = imgProgress * -26;
 
     imgWrapper.style.width = `${imgWidth}%`;
     imgWrapper.style.height = `${imgHeight}vh`;
@@ -527,7 +528,7 @@ function initVenueScrollStory() {
       textWrapper.style.visibility = 'visible';
       
       const textTranslateY = (1 - textProgress) * 40; // Slide up offset
-      const textTranslateX = 14 * textProgress; // Slide right offset next to pinned image
+      const textTranslateX = 18 * textProgress; // Slide right offset (further right for larger gap)
       textWrapper.style.transform = `translate3d(${textTranslateX}vw, ${textTranslateY}px, 0)`;
     } else {
       textWrapper.style.opacity = 0;
@@ -541,6 +542,64 @@ function initVenueScrollStory() {
   window.addEventListener('scroll', scrollListener);
   // Trigger once initially to position layouts on load
   handleScroll();
+}
+
+// Dynamic scroll-driven home collage organic rotation & floating stagger
+function initHomeCollageScroll() {
+  const collage = document.querySelector('.photo-collage');
+  const items = document.querySelectorAll('.collage-item');
+  if (!collage || items.length === 0) return;
+
+  const handleCollageScroll = () => {
+    // Disable scrolling movement on mobile viewports
+    if (window.innerWidth <= 900) {
+      items.forEach(item => {
+        item.style.transform = '';
+      });
+      return;
+    }
+
+    const viewHeight = window.innerHeight;
+    const rect = collage.getBoundingClientRect();
+
+    // Trigger only when the collage enters the visible viewport
+    if (rect.top < viewHeight && rect.bottom > 0) {
+      const totalScrollHeight = viewHeight + rect.height;
+      const scrolled = viewHeight - rect.top;
+      const ratio = scrolled / totalScrollHeight; // Ratio from 0 to 1
+
+      // progress is centered at 0 when the collage is exactly halfway scrolled
+      const progress = ratio - 0.5;
+
+      // Item 1 (Large left): Tilt clockwise & float upward
+      const rot1 = progress * 6; // Max 3deg rotation
+      const transY1 = progress * -40; // Max 20px translation
+      items[0].style.transform = `rotate(${rot1}deg) translateY(${transY1}px)`;
+
+      // Item 2 (Top right): Tilt counter-clockwise & float downward
+      const rot2 = progress * -5;
+      const transY2 = progress * 35;
+      items[1].style.transform = `rotate(${rot2}deg) translateY(${transY2}px)`;
+
+      // Item 3 (Bottom center-right): Large clockwise tilt & float left-up
+      const rot3 = progress * 8;
+      const transY3 = progress * -50;
+      const transX3 = progress * -15;
+      items[2].style.transform = `rotate(${rot3}deg) translate3d(${transX3}px, ${transY3}px, 0)`;
+
+      // Item 4 (Far right): Tilt counter-clockwise & float right-down
+      const rot4 = progress * -6;
+      const transY4 = progress * 25;
+      const transX4 = progress * 15;
+      items[3].style.transform = `rotate(${rot4}deg) translate3d(${transX4}px, ${transY4}px, 0)`;
+    }
+  };
+
+  // Bind the scroll event listener
+  scrollListener = handleCollageScroll;
+  window.addEventListener('scroll', scrollListener);
+  // Trigger once initially
+  handleCollageScroll();
 }
 
 // Navigation click handlers
