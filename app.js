@@ -465,9 +465,10 @@ function initFAQ() {
       if (!wasOpen) {
         item.classList.add('open');
         item.querySelector('.faq-toggle').textContent = '−';
-      }
     });
   });
+}
+
 // Dynamic sticky split panel logic on scroll
 function initVenueLayout() {
   const layout = document.querySelector('.venue-split-layout');
