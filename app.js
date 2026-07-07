@@ -25,23 +25,19 @@ const pages = {
           <div class="tornado-card"><img src="images/elopement_images/joyjulian-19_websize.jpg" alt="Elopement 1" /></div>
           <div class="tornado-card"><img src="images/elopement_images/joyjulian-20_websize.jpg" alt="Elopement 2" /></div>
           <div class="tornado-card"><img src="images/elopement_images/joyjulian-22_websize.jpg" alt="Elopement 3" /></div>
-          <div class="tornado-card"><img src="images/elopement_images/joyjulian-47_websize.jpg" alt="Elopement 4" /></div>
-          <div class="tornado-card"><img src="images/elopement_images/joyjulian-51_websize.jpg" alt="Elopement 5" /></div>
-          <div class="tornado-card"><img src="images/elopement_images/joyjulian-67_websize.jpg" alt="Elopement 6" /></div>
-          <div class="tornado-card"><img src="images/elopement_images/joyjulian-71_websize.jpg" alt="Elopement 7" /></div>
-          <div class="tornado-card"><img src="images/elopement_images/joyjulian-76_websize.jpg" alt="Elopement 8" /></div>
-          <div class="tornado-card"><img src="images/elopement_images/joyjulian-95_websize.jpg" alt="Elopement 9" /></div>
-          <div class="tornado-card"><img src="images/elopement_images/joyjulian-106_websize.jpg" alt="Elopement 10" /></div>
-          <div class="tornado-card"><img src="images/elopement_images/joyjulian-111_websize.jpg" alt="Elopement 11" /></div>
-          <div class="tornado-card"><img src="images/elopement_images/joyjulian-128_websize.jpg" alt="Elopement 12" /></div>
-          <div class="tornado-card"><img src="images/elopement_images/joyjulian-132_websize.jpg" alt="Elopement 13" /></div>
-          <div class="tornado-card"><img src="images/elopement_images/joyjulian-133_websize.jpg" alt="Elopement 14" /></div>
-          <div class="tornado-card"><img src="images/elopement_images/joyjulian-141_websize.jpg" alt="Elopement 15" /></div>
-          <div class="tornado-card"><img src="images/elopement_images/joyjulian-147_websize.jpg" alt="Elopement 16" /></div>
-          <div class="tornado-card"><img src="images/elopement_images/joyjulian-157_websize.jpg" alt="Elopement 17" /></div>
-          <div class="tornado-card"><img src="images/elopement_images/joyjulian-158_websize.jpg" alt="Elopement 18" /></div>
-          <div class="tornado-card"><img src="images/elopement_images/joyjulian-163_websize.jpg" alt="Elopement 19" /></div>
-          <div class="tornado-card"><img src="images/elopement_images/joyjulian-164_websize.jpg" alt="Elopement 20" /></div>
+          <div class="tornado-card"><img src="images/elopement_images/joyjulian-51_websize.jpg" alt="Elopement 4" /></div>
+          <div class="tornado-card"><img src="images/elopement_images/joyjulian-95_websize.jpg" alt="Elopement 5" /></div>
+          <div class="tornado-card"><img src="images/elopement_images/joyjulian-106_websize.jpg" alt="Elopement 6" /></div>
+          <div class="tornado-card"><img src="images/elopement_images/joyjulian-111_websize.jpg" alt="Elopement 7" /></div>
+          <div class="tornado-card"><img src="images/elopement_images/joyjulian-128_websize.jpg" alt="Elopement 8" /></div>
+          <div class="tornado-card"><img src="images/elopement_images/joyjulian-132_websize.jpg" alt="Elopement 9" /></div>
+          <div class="tornado-card"><img src="images/elopement_images/joyjulian-133_websize.jpg" alt="Elopement 10" /></div>
+          <div class="tornado-card"><img src="images/elopement_images/joyjulian-141_websize.jpg" alt="Elopement 11" /></div>
+          <div class="tornado-card"><img src="images/elopement_images/joyjulian-147_websize.jpg" alt="Elopement 12" /></div>
+          <div class="tornado-card"><img src="images/elopement_images/joyjulian-157_websize.jpg" alt="Elopement 13" /></div>
+          <div class="tornado-card"><img src="images/elopement_images/joyjulian-158_websize.jpg" alt="Elopement 14" /></div>
+          <div class="tornado-card"><img src="images/elopement_images/joyjulian-163_websize.jpg" alt="Elopement 15" /></div>
+          <div class="tornado-card"><img src="images/elopement_images/joyjulian-164_websize.jpg" alt="Elopement 16" /></div>
         </div>
         <div class="tornado-hint">Scroll down to swirl memories &darr;</div>
       </div>
@@ -635,34 +631,38 @@ function initHomeCollageScroll() {
     cards.forEach((card, i) => {
       // Calculate vertical position relative to screen center
       const baseY = (i - (totalCards / 2)) * verticalGap;
-      // Shift spiral up based on progress
-      const yOffset = baseY - (ratio * totalCards * verticalGap) + ((totalCards * verticalGap) / 2);
+      // Shift spiral up based on progress, adding a +380px starting offset on load
+      // so even the first card starts cleanly below the viewport center (out-of-focus).
+      const yOffset = baseY - (ratio * totalCards * verticalGap) + ((totalCards * verticalGap) / 2) + (1 - ratio) * 380;
 
       // Lock rotation angle directly to vertical offset distance.
       // Every 380px of vertical travel spins the card 90 degrees (Math.PI/2 radians).
-      // This mathematically guarantees the card is at 0 degrees (front center) when yOffset = 0!
       const rad = yOffset * (Math.PI / 380);
 
+      // Organic aesthetic jitter and tilt offsets for editorial chaotic look
+      const jitterX = (i % 4 - 1.5) * 30; // Staggers cards slightly horizontally
+      const tilt = (i % 3 - 1) * 8; // Alternates slight Z-axis rotation tilts (-8deg, 0deg, 8deg)
+
       // Trigonometric coordinates
-      const x = Math.sin(rad) * radiusX;
+      const x = Math.sin(rad) * radiusX + jitterX;
       const z = Math.cos(rad) * radiusZ;
       const normalizedZ = z / radiusZ; // Range: -1 to 1
 
-      // Focus spotlight trigger: card must be vertically centered
-      const isFocused = Math.abs(yOffset) < 90;
+      // Focus spotlight trigger: widened to 180px so multiple photos can be centered/focused at once
+      const isFocused = Math.abs(yOffset) < 180;
 
       let scale, opacity;
       if (isFocused) {
         // Compute focus weight factor (0 to 1) based on center proximity
-        const focusWeight = 1 - (Math.abs(yOffset) / 90);
+        const focusWeight = 1 - (Math.abs(yOffset) / 180);
         scale = 0.95 + focusWeight * 0.11; // Grows up to 1.06x
         opacity = 0.75 + focusWeight * 0.25; // Brightens up to 1.0
         card.style.borderColor = `rgba(236, 233, 213, ${0.15 + focusWeight * 0.85})`;
         card.style.boxShadow = `0 ${12 + focusWeight * 18}px ${30 + focusWeight * 20}px rgba(0, 0, 0, ${0.2 + focusWeight * 0.2})`;
       } else {
-        // Blur / fade out in background orbit
+        // Blur / fade out in background orbit (increased slightly for background visibility)
         scale = 0.7 + (normalizedZ + 1) * 0.125; // Range: 0.7x to 0.95x
-        opacity = 0.12 + (normalizedZ + 1) * 0.24; // Range: 0.12 to 0.6
+        opacity = 0.2 + (normalizedZ + 1) * 0.225; // Range: 0.2 to 0.65
         card.style.borderColor = 'rgba(236, 233, 213, 0.08)';
         card.style.boxShadow = '0 12px 30px rgba(0, 0, 0, 0.2)';
       }
@@ -670,8 +670,8 @@ function initHomeCollageScroll() {
       // Compute zIndex dynamically to draw foreground elements over background
       const zIndex = Math.round((normalizedZ + 1) * 200);
 
-      // Apply 3D coordinate transform
-      card.style.transform = `translate3d(${x}px, ${yOffset}px, ${z}px) scale(${scale})`;
+      // Apply 3D coordinate transform with organic Z-rotation
+      card.style.transform = `translate3d(${x}px, ${yOffset}px, ${z}px) scale(${scale}) rotate(${tilt}deg)`;
       card.style.opacity = opacity;
       card.style.zIndex = zIndex;
     });
