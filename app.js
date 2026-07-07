@@ -6,20 +6,31 @@ const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzVMnyNSJWTsg
 // Page content templates
 const pages = {
   home: `
-    <section class="hero" style="margin-bottom: 2rem;">
+    <section class="hero" style="margin-bottom: 3rem;">
       <p class="hero-subtitle">Together with their families</p>
-      <div class="hero-logo-container" style="margin: 2rem auto 2.5rem; max-width: 320px;">
-        <img src="images/JandJ_logo.png" alt="Julian &amp; Joy Logo" style="width: 100%; height: auto; display: block; margin: 0 auto;" />
-      </div>
+      <h1 class="hero-names">
+        Julian
+        <span class="ampersand">&amp;</span>
+        Joy
+      </h1>
       <div class="divider"></div>
       <p class="hero-date">May 22, 2027</p>
       <p class="hero-location">City, State</p>
     </section>
 
-    <div style="padding: 0 2rem 4rem;">
-      <div class="scroll-image-container">
-        <!-- Swap the src with your actual high-quality elopement photo! -->
-        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1600&q=90" class="parallax-img" alt="Our Elopement" />
+    <!-- Asymmetrical Editorial Collage -->
+    <div class="photo-collage">
+      <div class="collage-item item-1">
+        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1000&q=80" alt="Elopement 1" />
+      </div>
+      <div class="collage-item item-2">
+        <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1000&q=80" alt="Elopement 2" />
+      </div>
+      <div class="collage-item item-3">
+        <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=1000&q=80" alt="Elopement 3" />
+      </div>
+      <div class="collage-item item-4">
+        <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=1000&q=80" alt="Elopement 4" />
       </div>
     </div>
   `,
@@ -122,19 +133,30 @@ const pages = {
       <h2 class="page-title">Venue</h2>
       <div class="divider"></div>
       <h3>Château de la Couronne</h3>
-      <p style="margin-bottom: 1.5rem; opacity: 0.8;">Marthon, France</p>
-      
-      <div class="scroll-image-container">
-        <!-- High-quality French chateau photo -->
-        <img src="https://images.unsplash.com/photo-1508849789987-4e5333c12b78?auto=format&fit=crop&w=1600&q=90" class="parallax-img" alt="Château de la Couronne" />
+      <p style="margin-bottom: 2rem; opacity: 0.8;">Marthon, France</p>
+
+      <!-- Asymmetrical Editorial Collage for the Venue -->
+      <div class="photo-collage" style="margin: 4rem auto 5rem;">
+        <div class="collage-item item-1">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7Cv6g5LBm8Xh-0P9adhm-QomRqCEaLNONemB-4f0sug&s=10" alt="Château Exterior" />
+        </div>
+        <div class="collage-item item-2">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFYNpOpRgpT4O96iZRmRGHpcghuZD05sE-xGiYTCWoqQ&s=10" alt="Château Aerial" />
+        </div>
+        <div class="collage-item item-3">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSd12C6jHr2Uqo0hhKxntirUjuHP4cN_EbWRzZcLL8niA&s" alt="Château Pool" />
+        </div>
+        <div class="collage-item item-4">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPGjTeeJzw6_yIdqb1oToIvxRMC2ParkdFX46X9Co9ig&s=10" alt="Château Entrance" />
+        </div>
       </div>
       
-      <div class="divider-small"></div>
-      <p style="max-width:600px;margin:0 auto;line-height:1.8;">
+      <div class="divider-small" style="margin-top: 5rem;"></div>
+      <p style="max-width:700px;margin:0 auto 2.5rem;line-height:1.8;">
         We are thrilled to host our celebration at the enchanting Château de la Couronne! 
         Nestled in the picturesque French countryside, this stunning 16th-century estate features sprawling gardens, luxurious rooms, and endless charm.
       </p>
-      <p style="margin-top: 1.5rem;">
+      <p style="margin-top: 1.5rem; margin-bottom: 3rem;">
         <a href="https://chateaudelacouronne.com" target="_blank" class="btn">Visit Venue Website</a>
       </p>
     </section>
@@ -354,11 +376,15 @@ function navigate(page) {
   void app.offsetWidth; // Force layout recalculation to reset CSS animation
   app.classList.add('fade-in');
 
-  // Clean up scroll listeners to prevent duplication
-  if (scrollListener) {
-    window.removeEventListener('scroll', scrollListener);
-    scrollListener = null;
-  }
+// Router
+function navigate(page) {
+  const app = document.getElementById('app');
+  app.innerHTML = pages[page] || pages.home;
+
+  // Trigger fade-in animation
+  app.classList.remove('fade-in');
+  void app.offsetWidth; // Force layout recalculation to reset CSS animation
+  app.classList.add('fade-in');
 
   // Update active nav link
   document.querySelectorAll('.nav-link').forEach((link) => {
@@ -368,7 +394,6 @@ function navigate(page) {
   // Re-attach event listeners / initialize components for dynamic pages
   if (page === 'music-requests') initMusicForm();
   if (page === 'faq') initFAQ();
-  if (page === 'home' || page === 'venue') initScrollParallax();
 
   // Re-render Pinterest widgets if embedded boards are present
   if (page === 'dress-code' || page === 'schedule') {
@@ -450,41 +475,6 @@ function initFAQ() {
       }
     });
   });
-}
-
-// Dynamic scroll-driven image parallax motion
-function initScrollParallax() {
-  const images = document.querySelectorAll('.parallax-img');
-  if (images.length === 0) return;
-
-  const handleScrollParallax = () => {
-    const viewHeight = window.innerHeight;
-
-    images.forEach(img => {
-      const container = img.closest('.scroll-image-container');
-      if (!container) return;
-
-      const rect = container.getBoundingClientRect();
-      // Only animate if the container is inside the user's viewport
-      if (rect.top < viewHeight && rect.bottom > 0) {
-        const totalScrollHeight = viewHeight + rect.height;
-        const scrolled = viewHeight - rect.top;
-        const ratio = scrolled / totalScrollHeight; // Ratio moves from 0 to 1
-
-        // Horizontal slide X (moves slightly left to right) and vertical parallax Y
-        const shiftX = (ratio - 0.5) * 50; // Slide X offset range
-        const shiftY = (ratio - 0.5) * -35; // Parallax Y offset range
-
-        img.style.transform = `scale(1.15) translate3d(${shiftX}px, ${shiftY}px, 0)`;
-      }
-    });
-  };
-
-  // Bind the scroll event listener
-  scrollListener = handleScrollParallax;
-  window.addEventListener('scroll', scrollListener);
-  // Trigger once initially to position images correctly on load
-  handleScrollParallax();
 }
 
 // Navigation click handlers
