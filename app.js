@@ -746,8 +746,8 @@ function initScheduleTimeline() {
     const rect = wrapper.getBoundingClientRect();
     const viewHeight = window.innerHeight;
 
-    // Progress bar starts filling when top of timeline reaches middle of viewport
-    const startScroll = viewHeight / 2;
+    // Progress bar starts filling when top of timeline reaches 70% of viewport height
+    const startScroll = viewHeight * 0.7;
     const totalHeight = rect.height;
     const elapsed = startScroll - rect.top;
 
