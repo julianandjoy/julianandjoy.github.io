@@ -215,21 +215,22 @@ a:hover {
   font-size: 0.85rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  margin-bottom: 2rem;
+  margin-bottom: 3.5rem; /* Increased vertical space below subtitle */
   opacity: 0.8;
 }
 
 .hero-names {
   font-family: var(--font-script);
-  font-size: 5rem; /* Balanced elegant size */
+  font-size: 5rem;
   font-weight: 400;
-  line-height: 1.1;
+  line-height: 1.25; /* Increased vertical space between names */
   letter-spacing: 0.05rem;
+  margin: 1.5rem 0 3.5rem 0; /* Added spacing above/below Julian & Joy */
 }
 
 .hero-names .name-left {
   display: inline-block;
-  transform: translate3d(-75px, 0, 0);
+  transform: translate3d(-110px, 0, 0); /* Staggered further left */
 }
 
 .hero-names .name-right {
@@ -242,7 +243,7 @@ a:hover {
   font-size: 2.1rem;
   color: var(--color-accent);
   font-style: normal;
-  margin: -0.1rem 0;
+  margin: 0.5rem 0; /* Added vertical space around ampersand */
 }
 
 .hero-date {
@@ -611,9 +612,10 @@ a:hover {
 
   .hero-names {
     font-size: 3.8rem;
+    margin: 1.2rem 0 2.5rem 0;
   }
   .hero-names .name-left {
-    transform: translate3d(-35px, 0, 0);
+    transform: translate3d(-50px, 0, 0); /* Proportionally adjusted for mobile */
   }
   .hero-names .name-right {
     transform: translate3d(35px, 0, 0);
