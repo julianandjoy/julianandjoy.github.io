@@ -22,20 +22,28 @@ const pages = {
     <div class="tornado-track">
       <div class="tornado-viewport">
         <div class="tornado-stage">
-          <div class="tornado-card">
-            <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1000&q=80" alt="Elopement 1" />
-          </div>
-          <div class="tornado-card">
-            <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1000&q=80" alt="Elopement 2" />
-          </div>
-          <div class="tornado-card">
-            <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=1000&q=80" alt="Elopement 3" />
-          </div>
-          <div class="tornado-card">
-            <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=1000&q=80" alt="Elopement 4" />
-          </div>
+          <div class="tornado-card"><img src="images/elopement_images/joyjulian-19_websize.jpg" alt="Elopement 1" /></div>
+          <div class="tornado-card"><img src="images/elopement_images/joyjulian-20_websize.jpg" alt="Elopement 2" /></div>
+          <div class="tornado-card"><img src="images/elopement_images/joyjulian-22_websize.jpg" alt="Elopement 3" /></div>
+          <div class="tornado-card"><img src="images/elopement_images/joyjulian-47_websize.jpg" alt="Elopement 4" /></div>
+          <div class="tornado-card"><img src="images/elopement_images/joyjulian-51_websize.jpg" alt="Elopement 5" /></div>
+          <div class="tornado-card"><img src="images/elopement_images/joyjulian-67_websize.jpg" alt="Elopement 6" /></div>
+          <div class="tornado-card"><img src="images/elopement_images/joyjulian-71_websize.jpg" alt="Elopement 7" /></div>
+          <div class="tornado-card"><img src="images/elopement_images/joyjulian-76_websize.jpg" alt="Elopement 8" /></div>
+          <div class="tornado-card"><img src="images/elopement_images/joyjulian-95_websize.jpg" alt="Elopement 9" /></div>
+          <div class="tornado-card"><img src="images/elopement_images/joyjulian-106_websize.jpg" alt="Elopement 10" /></div>
+          <div class="tornado-card"><img src="images/elopement_images/joyjulian-111_websize.jpg" alt="Elopement 11" /></div>
+          <div class="tornado-card"><img src="images/elopement_images/joyjulian-128_websize.jpg" alt="Elopement 12" /></div>
+          <div class="tornado-card"><img src="images/elopement_images/joyjulian-132_websize.jpg" alt="Elopement 13" /></div>
+          <div class="tornado-card"><img src="images/elopement_images/joyjulian-133_websize.jpg" alt="Elopement 14" /></div>
+          <div class="tornado-card"><img src="images/elopement_images/joyjulian-141_websize.jpg" alt="Elopement 15" /></div>
+          <div class="tornado-card"><img src="images/elopement_images/joyjulian-147_websize.jpg" alt="Elopement 16" /></div>
+          <div class="tornado-card"><img src="images/elopement_images/joyjulian-157_websize.jpg" alt="Elopement 17" /></div>
+          <div class="tornado-card"><img src="images/elopement_images/joyjulian-158_websize.jpg" alt="Elopement 18" /></div>
+          <div class="tornado-card"><img src="images/elopement_images/joyjulian-163_websize.jpg" alt="Elopement 19" /></div>
+          <div class="tornado-card"><img src="images/elopement_images/joyjulian-164_websize.jpg" alt="Elopement 20" /></div>
         </div>
-        <div class="tornado-hint">Scroll down to swirl photos &darr;</div>
+        <div class="tornado-hint">Scroll down to swirl memories &darr;</div>
       </div>
     </div>
   `,
@@ -177,7 +185,7 @@ const pages = {
       <div class="venue-interactive-track">
         <div class="venue-sticky-viewport">
           <div class="venue-image-panel">
-            <img src="https://images.unsplash.com/photo-1508849789987-4e5333c12b78?auto=format&fit=crop&w=1600&q=90" alt="Château de la Couronne" />
+            <img src="images/couronne.webp" alt="Château de la Couronne" />
           </div>
           
           <div class="venue-text-panel">
@@ -619,16 +627,17 @@ function initHomeCollageScroll() {
     let ratio = scrolled / totalHeight;
     ratio = Math.max(0, Math.min(1, ratio)); // 0 to 1
 
-    // Map scroll ratio to 1.5 full rotations (540 degrees of spin)
-    const globalRotation = ratio * 540;
+    // Map scroll ratio to 3.5 full rotations (1260 degrees of spin)
+    const globalRotation = ratio * 1260;
 
     // 3D Orbit size parameters
     const radiusX = window.innerWidth * 0.18; // Horizontal orbit spread (18% of screen width)
     const radiusZ = 280; // Depth perspective radius
+    const totalCards = cards.length;
     
     cards.forEach((card, i) => {
-      // base angle separation (90 degrees between each card in orbit)
-      const baseAngle = i * 90;
+      // base angle separation staggered evenly around the spiral circle
+      const baseAngle = i * (360 / 6);
       const currentAngle = globalRotation + baseAngle;
       const rad = currentAngle * Math.PI / 180;
 
@@ -636,15 +645,30 @@ function initHomeCollageScroll() {
       const x = Math.sin(rad) * radiusX;
       const z = Math.cos(rad) * radiusZ;
       
-      // Vertical helix layout (stagger cards to form vertical tornado shape)
-      const baseY = (i - 1.5) * 80;
-      const yOffset = baseY + (ratio * 60 - 30); // Dynamic vertical drift as it spins
+      // Vertical helix layout (stagger cards vertically to form vertical spiral)
+      const baseY = (i - (totalCards / 2)) * 110;
+      // Shift the entire spiral vertically as we scroll so the cards pass the viewport center
+      const yOffset = baseY - (ratio * totalCards * 110) + ((totalCards * 110) / 2);
 
       // Compute scale & opacity based on Z depth position
       // z is positive when closer to screen (front stage)
       const normalizedZ = z / radiusZ; // Range: -1 to 1
-      const scale = 0.75 + (normalizedZ + 1) * 0.15; // Range: 0.75 to 1.05
-      const opacity = 0.25 + (normalizedZ + 1) * 0.375; // Range: 0.25 to 1.0
+
+      // Focus spotlight trigger: card must be in the foreground AND vertically near center stage
+      const isFocused = (normalizedZ > 0.8) && (Math.abs(yOffset) < 100);
+
+      let scale, opacity;
+      if (isFocused) {
+        scale = 1.05;
+        opacity = 1.0;
+        card.style.borderColor = 'var(--color-accent)';
+        card.style.boxShadow = '0 20px 45px rgba(0, 0, 0, 0.45)';
+      } else {
+        scale = 0.65 + (normalizedZ + 1) * 0.15; // Range: 0.65 to 0.95
+        opacity = 0.15 + (normalizedZ + 1) * 0.225; // Range: 0.15 to 0.6
+        card.style.borderColor = 'rgba(236, 233, 213, 0.08)';
+        card.style.boxShadow = '0 12px 30px rgba(0, 0, 0, 0.25)';
+      }
       
       // Compute zIndex dynamically to draw foreground elements over background
       const zIndex = Math.round((normalizedZ + 1) * 200);
@@ -653,13 +677,6 @@ function initHomeCollageScroll() {
       card.style.transform = `translate3d(${x}px, ${yOffset}px, ${z}px) scale(${scale})`;
       card.style.opacity = opacity;
       card.style.zIndex = zIndex;
-
-      // Add a border highlight if the card is in foreground (center stage)
-      if (normalizedZ > 0.82) {
-        card.style.borderColor = 'var(--color-accent)';
-      } else {
-        card.style.borderColor = 'rgba(236, 233, 213, 0.08)';
-      }
     });
   };
 

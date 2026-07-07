@@ -747,7 +747,7 @@ a:hover {
 .tornado-track {
   position: relative;
   width: 100%;
-  height: 250vh; /* Scroll distance for smooth swirling rotation */
+  height: 480vh; /* Scroll distance for smooth swirling rotation */
   background: transparent;
 }
 
