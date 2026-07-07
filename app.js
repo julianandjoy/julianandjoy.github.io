@@ -45,89 +45,124 @@ const pages = {
       <h2 class="page-title">Schedule of Events</h2>
       <div class="divider"></div>
       
-      <h3 class="day-title" style="margin-top: 2.5rem; margin-bottom: 1.5rem; font-weight: 400; font-size: 1.6rem; color: var(--color-accent);">Day 1 (5/21)</h3>
-      <div class="events-grid">
-        <div class="event-card">
-          <h3>Check In</h3>
-          <p class="event-time">16:00</p>
-          <p class="event-desc">Welcome to Chateau de la Couronne! Settle in, explore the chateau, and make yourself comfortable.</p>
+      <!-- Chronological Interactive Timeline -->
+      <div class="timeline-wrapper">
+        <div class="timeline-line">
+          <div class="timeline-progress-bar"></div>
         </div>
-        <div class="event-card">
-          <h3>Welcome Dinner</h3>
-          <p class="event-time">18:00</p>
-          <p class="event-desc">Join us for a dinner to kick off the weekend! We’ll have welcome drinks, snax, and pizzas!</p>
-          <p class="event-desc" style="font-size: 0.95rem; margin-top: 0.75rem;">
-            <strong style="color: var(--color-accent);">Dress Code:</strong> Casual &amp; Comfortable — <a href="#dress-code">View attire guidelines &amp; mood boards</a>
-          </p>
+
+        <!-- Day 1 Segment -->
+        <div class="timeline-day-header">Day 1 — Friday, May 21</div>
+
+        <div class="timeline-item">
+          <div class="timeline-marker"><div class="timeline-dot"></div></div>
+          <div class="timeline-time">16:00</div>
+          <div class="timeline-content">
+            <h3>Check In</h3>
+            <p>Welcome to Château de la Couronne! Settle in, explore the estate, and make yourself comfortable.</p>
+          </div>
         </div>
-      </div>
-      
-      <div class="divider-small"></div>
-      
-      <h3 class="day-title" style="margin-top: 2.5rem; margin-bottom: 1.5rem; font-weight: 400; font-size: 1.6rem; color: var(--color-accent);">Day 2 (5/22)</h3>
-      <div class="events-grid">
-        <div class="event-card">
-          <h3>Brunch</h3>
-          <p class="event-time">Morning</p>
-          <p class="event-desc">Enjoy a casual brunch on the property! We’ll have an assortment of options as a buffet.</p>
-          <p class="event-desc" style="font-size: 0.9rem; opacity: 0.8; margin-top: 0.5rem;">
-            <strong>Dress Code:</strong> Come in whatever you are comfortable in!
-          </p>
+
+        <div class="timeline-item">
+          <div class="timeline-marker"><div class="timeline-dot"></div></div>
+          <div class="timeline-time">18:00</div>
+          <div class="timeline-content">
+            <h3>Welcome Dinner</h3>
+            <p>Join us for dinner to kick off the celebration weekend! We’ll have welcome drinks, bites, and pizzas!</p>
+            <p class="timeline-dress-code"><strong>Dress Code:</strong> Casual &amp; Comfortable — <a href="#dress-code">View attire mood boards</a></p>
+          </div>
         </div>
-        <div class="event-card">
-          <h3>Wedding Ceremony</h3>
-          <p class="event-time">Afternoon Onwards</p>
-          <p class="event-desc">Julian and Joy get married! We make it official with all the people we love as witnesses.</p>
-          <p class="event-desc" style="font-size: 0.95rem; margin-top: 0.75rem;">
-            <strong style="color: var(--color-accent);">Dress Code:</strong> Semi-Formal / Cocktail Attire — <a href="#dress-code">View attire guidelines &amp; mood boards</a>
-          </p>
+
+        <!-- Day 2 Segment -->
+        <div class="timeline-day-header">Day 2 — Saturday, May 22</div>
+
+        <div class="timeline-item">
+          <div class="timeline-marker"><div class="timeline-dot"></div></div>
+          <div class="timeline-time">Morning</div>
+          <div class="timeline-content">
+            <h3>Brunch</h3>
+            <p>Enjoy a casual buffet brunch on the château lawns. An assortment of local French pastries and hot breakfast options will be served.</p>
+            <p class="timeline-dress-code"><strong>Dress Code:</strong> Come in whatever you are most comfortable in!</p>
+          </div>
         </div>
-        <div class="event-card">
-          <h3>Cocktail Hour</h3>
-          <p class="event-time">Afternoon</p>
-          <p class="event-desc">There will be drinks, snacks, and live music!</p>
+
+        <div class="timeline-item">
+          <div class="timeline-marker"><div class="timeline-dot"></div></div>
+          <div class="timeline-time">Afternoon</div>
+          <div class="timeline-content">
+            <h3>Wedding Ceremony</h3>
+            <p>Julian and Joy get married! We make it official with our closest family and friends as witnesses.</p>
+            <p class="timeline-dress-code"><strong>Dress Code:</strong> Semi-Formal / Cocktail Attire — <a href="#dress-code">View attire mood boards</a></p>
+          </div>
         </div>
-        <div class="event-card">
-          <h3>Seated Dinner</h3>
-          <p class="event-time">Evening</p>
-          <p class="event-desc">Ready for some food? We got you!</p>
+
+        <div class="timeline-item">
+          <div class="timeline-marker"><div class="timeline-dot"></div></div>
+          <div class="timeline-time">Afternoon</div>
+          <div class="timeline-content">
+            <h3>Cocktail Hour</h3>
+            <p>Raise a glass with us! There will be cocktails, wine, seasonal hors d'oeuvres, and live acoustic music on the terrace.</p>
+          </div>
         </div>
-        <div class="event-card">
-          <h3>Late Night Dancing</h3>
-          <p class="event-time">Late Night</p>
-          <p class="event-desc">weeeeeee</p>
+
+        <div class="timeline-item">
+          <div class="timeline-marker"><div class="timeline-dot"></div></div>
+          <div class="timeline-time">Evening</div>
+          <div class="timeline-content">
+            <h3>Seated Dinner</h3>
+            <p>Join us in the grand dining room for a multi-course dinner celebrating local French gastronomy.</p>
+          </div>
         </div>
-      </div>
-      
-      <div class="divider-small"></div>
-      
-      <h3 class="day-title" style="margin-top: 2.5rem; margin-bottom: 1.5rem; font-weight: 400; font-size: 1.6rem; color: var(--color-accent);">Day 3 (5/23)</h3>
-      <div class="events-grid">
-        <div class="event-card">
-          <h3>Breakfast</h3>
-          <p class="event-time">Morning</p>
-          <p class="event-desc">Nothing cures a hangover better than a hearty breakfast (or some more drinks - later)</p>
+
+        <div class="timeline-item">
+          <div class="timeline-marker"><div class="timeline-dot"></div></div>
+          <div class="timeline-time">Late Night</div>
+          <div class="timeline-content">
+            <h3>Late Night Dancing</h3>
+            <p>Time to hit the dance floor! We have a live DJ, late-night snacks, and drinks until the early morning hours.</p>
+          </div>
         </div>
-        <div class="event-card">
-          <h3>Pool Party</h3>
-          <p class="event-time">Afternoon</p>
-          <p class="event-desc">Celebrate with us on our first day as a married couple! Relax and recover by the pool while enjoying some BBQ, games, and drinks!</p>
+
+        <!-- Day 3 Segment -->
+        <div class="timeline-day-header">Day 3 — Sunday, May 23</div>
+
+        <div class="timeline-item">
+          <div class="timeline-marker"><div class="timeline-dot"></div></div>
+          <div class="timeline-time">Morning</div>
+          <div class="timeline-content">
+            <h3>Breakfast</h3>
+            <p>Nothing cures a hangover better than a hearty French breakfast (and maybe some fresh hot coffee).</p>
+          </div>
         </div>
-        <div class="event-card">
-          <h3>Game Night</h3>
-          <p class="event-time">Evening</p>
-          <p class="event-desc">It’s time! Enjoy some light bites and drinks and we do what we do best - gamble! Join in on a casual night of gambling - we’ll have mahjong, cards, and poker chips!</p>
+
+        <div class="timeline-item">
+          <div class="timeline-marker"><div class="timeline-dot"></div></div>
+          <div class="timeline-time">Afternoon</div>
+          <div class="timeline-content">
+            <h3>Pool Party</h3>
+            <p>Relax and recover by the heated swimming pool! We'll have a casual outdoor BBQ, garden lawn games, and drinks.</p>
+          </div>
         </div>
-      </div>
-      
-      <div class="divider-small"></div>
-      
-      <h3 class="day-title" style="margin-top: 2.5rem; margin-bottom: 1.5rem; font-weight: 400; font-size: 1.6rem; color: var(--color-accent);">Day 4 (5/24)</h3>
-      <div class="events-grid">
-        <div class="event-card">
-          <h3>Breakfast &amp; Check Out</h3>
-          <p class="event-time">Morning</p>
-          <p class="event-desc">Check out!</p>
+
+        <div class="timeline-item">
+          <div class="timeline-marker"><div class="timeline-dot"></div></div>
+          <div class="timeline-time">Evening</div>
+          <div class="timeline-content">
+            <h3>Game Night</h3>
+            <p>Gather around for a casual, fun night of games and drinks. We’ll set up Mahjong tables, card games, and poker tables!</p>
+          </div>
+        </div>
+
+        <!-- Day 4 Segment -->
+        <div class="timeline-day-header">Day 4 — Monday, May 24</div>
+
+        <div class="timeline-item">
+          <div class="timeline-marker"><div class="timeline-dot"></div></div>
+          <div class="timeline-time">Morning</div>
+          <div class="timeline-content">
+            <h3>Farewell Breakfast &amp; Check Out</h3>
+            <p>One last breakfast together before bidding farewell and checking out. Thank you for joining us for our special weekend!</p>
+          </div>
         </div>
       </div>
     </section>
@@ -393,6 +428,7 @@ function navigate(page) {
   // Re-attach event listeners / initialize components for dynamic pages
   if (page === 'music-requests') initMusicForm();
   if (page === 'faq') initFAQ();
+  if (page === 'schedule') initScheduleTimeline();
   if (page === 'venue') {
     if (window.innerWidth > 900) initVenueScrollStory();
     else initMobileScrollAnimation();
@@ -672,6 +708,47 @@ function initMobileScrollAnimation() {
   window.addEventListener('scroll', scrollListener);
   // Trigger once initially to position current layout correctly on load
   handleMobileScroll();
+}
+
+// Dynamic scroll-drawn chronological timeline tracking controller
+function initScheduleTimeline() {
+  const wrapper = document.querySelector('.timeline-wrapper');
+  const progressBar = document.querySelector('.timeline-progress-bar');
+  const items = document.querySelectorAll('.timeline-item');
+  if (!wrapper || !progressBar) return;
+
+  const handleTimelineScroll = () => {
+    const rect = wrapper.getBoundingClientRect();
+    const viewHeight = window.innerHeight;
+
+    // Progress bar starts filling when top of timeline reaches middle of viewport
+    const startScroll = viewHeight / 2;
+    const totalHeight = rect.height;
+    const elapsed = startScroll - rect.top;
+
+    let ratio = elapsed / totalHeight;
+    ratio = Math.max(0, Math.min(1, ratio)); // Clamp between 0 and 1
+
+    progressBar.style.transform = `scaleY(${ratio})`;
+
+    // Light up and reveal items as timeline progress matches their depth coordinate
+    items.forEach(item => {
+      const itemRect = item.getBoundingClientRect();
+      const itemMid = itemRect.top + itemRect.height / 2;
+
+      if (itemMid < startScroll) {
+        item.classList.add('active');
+      } else {
+        item.classList.remove('active');
+      }
+    });
+  };
+
+  // Bind the scroll event listener
+  scrollListener = handleTimelineScroll;
+  window.addEventListener('scroll', scrollListener);
+  // Trigger once initially
+  handleTimelineScroll();
 }
 
 // Navigation click handlers
