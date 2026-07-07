@@ -548,11 +548,11 @@ function initVenueScrollStory() {
     const viewHeight = window.innerHeight;
     const startY = 90; // Top navigation bar height offset
 
-    // Start morphing after scrolling past 120px (scroll buffer threshold)
-    // and complete the transition over the next 320px of scroll.
+    // Start morphing after scrolling past 250px (scroll buffer threshold)
+    // and complete the transition over the next 550px of scroll.
     const scrollY = window.scrollY;
-    const startThreshold = 120;
-    const morphDuration = 320;
+    const startThreshold = 250;
+    const morphDuration = 550;
     
     let ratio = 0;
     if (scrollY > startThreshold) {
