@@ -221,18 +221,28 @@ a:hover {
 
 .hero-names {
   font-family: var(--font-script);
-  font-size: 6.5rem; /* Re-balanced elegant display size for Slight font */
+  font-size: 5rem; /* Balanced elegant size */
   font-weight: 400;
-  line-height: 1.15;
+  line-height: 1.1;
   letter-spacing: 0.05rem;
+}
+
+.hero-names .name-left {
+  display: inline-block;
+  transform: translate3d(-75px, 0, 0);
+}
+
+.hero-names .name-right {
+  display: inline-block;
+  transform: translate3d(75px, 0, 0);
 }
 
 .hero-names .ampersand {
   display: block;
-  font-size: 2.5rem;
+  font-size: 2.1rem;
   color: var(--color-accent);
   font-style: normal;
-  margin: 0.3rem 0;
+  margin: -0.1rem 0;
 }
 
 .hero-date {
@@ -600,7 +610,13 @@ a:hover {
   }
 
   .hero-names {
-    font-size: 3.2rem;
+    font-size: 3.8rem;
+  }
+  .hero-names .name-left {
+    transform: translate3d(-35px, 0, 0);
+  }
+  .hero-names .name-right {
+    transform: translate3d(35px, 0, 0);
   }
 
   .hero {

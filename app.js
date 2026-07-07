@@ -9,9 +9,9 @@ const pages = {
     <section class="hero" style="margin-bottom: 3rem;">
       <p class="hero-subtitle">Together with their families</p>
       <h1 class="hero-names">
-        Julian
+        <span class="name-left">Julian</span>
         <span class="ampersand">&amp;</span>
-        Joy
+        <span class="name-right">Joy</span>
       </h1>
       <div class="divider"></div>
       <p class="hero-date">May 22, 2027</p>
