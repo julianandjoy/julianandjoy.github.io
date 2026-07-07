@@ -6,7 +6,7 @@ const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzVMnyNSJWTsg
 // Page content templates
 const pages = {
   home: `
-    <section class="hero" style="margin-bottom: 3rem;">
+    <section class="hero" style="margin-bottom: 1.5rem;">
       <p class="hero-subtitle">Together with their families</p>
       <h1 class="hero-names">
         <span class="name-left">Julian</span>
@@ -15,7 +15,7 @@ const pages = {
       </h1>
       <div class="divider"></div>
       <p class="hero-date">May 22, 2027</p>
-      <p class="hero-location">City, State</p>
+      <p class="hero-location">Château de la Couronne</p>
     </section>
 
     <!-- Swirling 3D Tornado Collage -->
