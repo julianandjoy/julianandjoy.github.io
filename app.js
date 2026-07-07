@@ -393,8 +393,14 @@ function navigate(page) {
   // Re-attach event listeners / initialize components for dynamic pages
   if (page === 'music-requests') initMusicForm();
   if (page === 'faq') initFAQ();
-  if (page === 'venue') initVenueScrollStory();
-  if (page === 'home') initHomeCollageScroll();
+  if (page === 'venue') {
+    if (window.innerWidth > 900) initVenueScrollStory();
+    else initMobileScrollAnimation();
+  }
+  if (page === 'home') {
+    if (window.innerWidth > 900) initHomeCollageScroll();
+    else initMobileScrollAnimation();
+  }
 
   // Re-render Pinterest widgets if embedded boards are present
   if (page === 'dress-code' || page === 'schedule') {
@@ -677,6 +683,46 @@ function initHomeCollageScroll() {
   window.addEventListener('scroll', scrollListener);
   // Trigger once initially
   handleCollageScroll();
+}
+
+// Dynamic mobile scroll-driven focus/reveal (fade & scale in center of screen)
+function initMobileScrollAnimation() {
+  if (window.innerWidth > 900) return;
+
+  const elements = document.querySelectorAll('.tornado-card, .venue-image-panel, .venue-text-panel');
+  if (elements.length === 0) return;
+
+  const handleMobileScroll = () => {
+    const viewHeight = window.innerHeight;
+    const center = viewHeight / 2;
+
+    elements.forEach(el => {
+      const rect = el.getBoundingClientRect();
+      const elementCenter = rect.top + rect.height / 2;
+
+      // Distance of element center from the center of the mobile screen
+      const distance = Math.abs(elementCenter - center);
+      const maxDistance = viewHeight * 0.48; // Trigger radius
+
+      if (distance < maxDistance) {
+        // Linear ratio to ease (0 to 1)
+        const ratio = 1 - (distance / maxDistance);
+        const ease = Math.sin(ratio * Math.PI / 2); // Smooth trig ease-out curves
+
+        el.style.opacity = 0.35 + ease * 0.65; // Focus scales from 35% opacity to 100% opacity
+        el.style.transform = `scale(${0.9 + ease * 0.1})`; // Focus scales from 0.9x to 1.0x size
+      } else {
+        el.style.opacity = 0.35;
+        el.style.transform = 'scale(0.9)';
+      }
+    });
+  };
+
+  // Bind the scroll event listener
+  scrollListener = handleMobileScroll;
+  window.addEventListener('scroll', scrollListener);
+  // Trigger once initially to position current layout correctly on load
+  handleMobileScroll();
 }
 
 // Navigation click handlers
